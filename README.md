@@ -6,6 +6,14 @@ How to use [fastlane](https://github.com/KrauseFx/fastlane) with [meteor](https:
 
 First, clone all these files in to your meteor project. The fastlane files are in the `.fastlane` directory, so meteor will ignore them.
 
+### Fastlane
+
+Install fastlane:
+
+~~~
+sudo gem install fastlane
+~~~
+
 ### mobile-config.js
 
 Open `mobile-config.js` and fill out all your info.
