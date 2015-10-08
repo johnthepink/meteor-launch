@@ -1,0 +1,115 @@
+# Customise this file, documentation can be found here:
+# https://github.com/KrauseFx/fastlane/tree/master/docs
+# All available actions: https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# By default, fastlane will send which actions are used
+# No personal data is shared, more information on https://github.com/fastlane/enhancer
+# Uncomment the following line to opt out
+# opt_out_usage
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "1.32.1"
+
+default_platform :ios
+
+
+platform :ios do
+  before_all do
+    ensure_git_status_clean
+  end
+
+  private_lane :build_app do
+    sigh(
+      app_identifier: ENV['APP_IDENTIFIER'],
+      username: ENV['APPLE_ID']
+    )
+
+    update_project_provisioning(
+      xcodeproj: ENV['PROJECT'],
+      profile: lane_context[SharedValues::SIGH_PROFILE_PATH],
+      target_filter: ENV['SCHEME'],
+      build_configuration: "Release"
+    )
+
+    gym(
+      use_legacy_build_api: true,
+      scheme: ENV['SCHEME'],
+      project: ENV['PROJECT']
+    )
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    snapshot
+  end
+
+  desc "Submit a new Beta Build to Apple TestFlight"
+  desc "This will also make sure the profile is up to date"
+  lane :beta do
+    # snapshot
+
+    build_app
+
+    pilot(
+      username: ENV['APPLE_ID']
+    )
+  end
+
+  desc "Submit a new Beta Build to Hockey"
+  desc "This will also make sure the profile is up to date"
+  lane :hockey do
+    # snapshot
+
+    build_app
+
+    hockey(
+      api_token: ENV['HOCKEY_API_TOKEN']
+    )
+  end
+
+  desc "Deploy a new version to the App Store"
+  desc "** Full Markdown** Support: `code`"
+  lane :deploy do
+    # snapshot
+
+    build_app
+
+    deliver(
+      username: ENV['APPLE_ID'],
+      force: true
+    )
+    # frameit
+  end
+
+  after_all do |lane|
+    hipchat(
+      message: "App successfully released!",
+      message_format: "html",
+      channel: ENV['HIPCHAT_ROOM'],
+      from: "fastlane",
+      success: true
+    )
+  end
+
+  error do |lane, exception|
+    hipchat(
+      message: "Lane #{lane} failed! #{exception}",
+      message_format: "html",
+      channel: ENV['HIPCHAT_ROOM'],
+      from: "fastlane",
+      success: false
+    )
+  end
+end
+
+
+# More information about multiple platforms in fastlane:
+# https://github.com/KrauseFx/fastlane/blob/master/docs/Platforms.md
