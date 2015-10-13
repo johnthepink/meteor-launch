@@ -14,6 +14,15 @@ Install fastlane:
 sudo gem install fastlane
 ~~~
 
+### Android Key
+
+This will generate a key to sign your Android builds, so they can go to Hockey and Google Play:
+
+~~~
+keytool -genkey -alias your-app-name -keyalg RSA \
+    -keysize 2048 -validity 10000
+~~~
+
 ### mobile-config.js
 
 Open `mobile-config.js` and fill out all your info.
