@@ -115,4 +115,4 @@ This command will:
 
 ### Google Play
 
-Coming soon
+Coming soon using [playup](https://github.com/jeduan/playup)
