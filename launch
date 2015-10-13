@@ -16,7 +16,7 @@ prepare_apk () {
     $ANDROID_KEY
 
   echo "Aligning Android apk..."
-  $ANDROID_HOME/build-tools/23.0.1/zipalign 4 \
+  $ANDROID_ZIPALIGN 4 \
     $ANDROID_BUILD/release-unsigned.apk \
     $ANDROID_BUILD/production.apk
 }
