@@ -1,6 +1,6 @@
-# Meteor Fastlane
+# Meteor Launch
 
-How to use [fastlane](https://github.com/KrauseFx/fastlane) with [meteor](https://github.com/meteor/meteor) to automate iOS builds to TestFlight, the AppStore, Hockey, and whatever else. Read fastlane's documentation for me.
+Automating meteor builds to the AppStore, TestFlight, Hockey, Google Play, and more later.
 
 ## Before you build
 
