@@ -14,7 +14,14 @@ Install fastlane:
 sudo gem install fastlane
 ~~~
 
-### Android Key
+### Android
+
+Set your `$ANDROID_HOME` in your `.bashrc` or `.zshrc`:
+
+~~~
+export ANDROID_HOME=xxx
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+~~~
 
 This will generate a key to sign your Android builds, so they can go to Hockey and Google Play:
 
