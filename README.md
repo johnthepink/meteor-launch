@@ -120,3 +120,10 @@ This command will:
 ~~~
 ./launch deploy servername.com
 ~~~
+
+To just deploy to App Store or Google Play, use the respective argument:
+
+~~~
+./launch play servername.com
+./launch appstore servername.com
+~~~

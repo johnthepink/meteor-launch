@@ -61,6 +61,12 @@ elif [[ $1 = "deploy" ]]; then
   prepare_apk
   android_play_store
   fastlane ios deploy
+elif [[ $1 = "play" ]]; then
+  prepare_apk
+  android_play_store
+elif [[ $1 = "appstore" ]]; then
+  echo "Deploying to App Store..."
+  fastlane ios deploy
 else
   echo "Done"
 fi
