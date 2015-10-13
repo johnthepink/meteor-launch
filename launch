@@ -30,6 +30,14 @@ android_hockey () {
     https://rink.hockeyapp.net/api/2/apps/${ANDROID_HOCKEY_ID}/app_versions/upload
 }
 
+android_play_store () {
+  echo "Deploying to Google Play..."
+
+  playup \
+    --auth $PLAY_API_KEY \
+    $ANDROID_BUILD/production.apk
+}
+
 if [[ -z $2 ]]; then
   echo "Please provide a server as the second argument"
 fi
@@ -50,6 +58,8 @@ elif [[ $1 = "hockey" ]]; then
 # deploy to production if 'deploy'
 elif [[ $1 = "deploy" ]]; then
   echo "Deploying to production..."
+  prepare_apk
+  android_play_store
   fastlane ios deploy
 else
   echo "Done"

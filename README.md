@@ -30,6 +30,12 @@ keytool -genkey -alias your-app-name -keyalg RSA \
     -keysize 2048 -validity 10000
 ~~~
 
+Install [playup](https://github.com/jeduan/playup) for deploying to Google Play Store.
+
+~~~
+npm install -g playup
+~~~
+
 ### mobile-config.js
 
 Open `mobile-config.js` and fill out all your info.
@@ -95,11 +101,13 @@ This command will:
 ./launch hockey servername.com
 ~~~
 
-### AppStore
+### AppStore / Google Play
 
 This command will:
 
 - build meteor
+- sign and align apk
+- upload to play store
 - build app archive
 - generate screenshots
 - install provisioning profile
@@ -112,7 +120,3 @@ This command will:
 ~~~
 ./launch deploy servername.com
 ~~~
-
-### Google Play
-
-Coming soon using [playup](https://github.com/jeduan/playup)
