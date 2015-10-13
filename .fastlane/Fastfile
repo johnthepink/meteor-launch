@@ -71,7 +71,7 @@ platform :ios do
     build_app
 
     hockey(
-      api_token: ENV['HOCKEY_API_TOKEN']
+      api_token: ENV['IOS_HOCKEY_TOKEN']
     )
   end
 
