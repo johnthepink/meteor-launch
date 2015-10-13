@@ -58,7 +58,7 @@ This command will:
 - alert testers
 
 ~~~
-./deploy.sh beta servername.com
+./launch beta servername.com
 ~~~
 
 ### Hockey
@@ -66,15 +66,17 @@ This command will:
 This command will:
 
 - build meteor
-- build app archive
-- generate screenshots
-- install provisioning profile
+- build ios app archive
+- generate ios screenshots
+- install ios provisioning profile
+- upload to Hockey
+- sign and align android apk
 - upload to Hockey
 - ping hipchat
 - alert testers
 
 ~~~
-./deploy.sh hockey servername.com
+./launch hockey servername.com
 ~~~
 
 ### AppStore
@@ -92,5 +94,9 @@ This command will:
 - alert testers
 
 ~~~
-./deploy.sh deploy servername.com
+./launch deploy servername.com
 ~~~
+
+### Google Play
+
+Coming soon
