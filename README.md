@@ -16,7 +16,7 @@ sudo gem install fastlane
 
 ### Android
 
-Set your `$ANDROID_HOME` in your `.bashrc` or `.zshrc`:
+Install the [Android SDK](https://developer.android.com/sdk/index.html), then set your `$ANDROID_HOME` in your `.bashrc` or `.zshrc`:
 
 ~~~
 export ANDROID_HOME=xxx
