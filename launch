@@ -2,7 +2,6 @@
 
 # build meteor
 echo "Building meteor..."
-exit
 meteor build .build --server $2
 
 # deploy to TestFlight if 'beta'
