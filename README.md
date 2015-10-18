@@ -50,10 +50,10 @@ cp .fastlane/.env.example .fastlane/.env
 
 ### cordova-ios-requires-fullscreen
 
-iOS9 introduced the split screen stuff for iPad, which means we either have to specify how to handle that or require fullscreen. You can fix this with [cordova-ui-requires-fullscreen](https://www.npmjs.com/package/cordova-ios-requires-fullscreen)
+iOS9 introduced the split screen stuff for iPad, which means we either have to specify how to handle that or require fullscreen. You can fix this with [cordova-ios-requires-fullscreen](https://www.npmjs.com/package/cordova-ios-requires-fullscreen)
 
 ~~~
-meteor add cordova:cordova-ui-requires-fullscreen@0.0.2
+meteor add cordova:cordova-ios-requires-fullscreen@0.0.2
 ~~~
 
 ## Deploying
