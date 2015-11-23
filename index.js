@@ -7,11 +7,13 @@ const Vorpal = require('vorpal')(),
 
 const Meteor = require('./lib/meteor'),
       Hockey = require('./lib/hockey'),
-      iTunes = require('./lib/iTunes');
+      iTunes = require('./lib/iTunes'),
+      Android = require('./lib/android'),
+      Play = require('./lib/play');
 
 const launchFile = Path.join(process.cwd(), 'launch.json');
 const launchVars = require(launchFile);
-const superEnv = _.extend(env, process.env);
+const superEnv = _.extend(launchVars, process.env);
 
 Vorpal
   .command('build', 'Builds the Meteor app in the .build folder')
@@ -25,8 +27,13 @@ Vorpal
   .command('hockey', 'Build and deploy to Hockey')
   .action(function(args) {
     Meteor.build(superEnv, (result) => {
-      Hockey.upload(superEnv, (result) => {
+      Hockey.uploadIOS(superEnv, (result) => {
         return
+      })
+      Android.prepareApk(superEnv, (result) => {
+        Hockey.uploadAndroid(superEnv, (result) => {
+          return
+        })
       })
     })
   });
@@ -52,5 +59,16 @@ Vorpal
   });
 
 Vorpal
-  .parse(process.argv);
+  .command('playstore', 'Build and deploy to Google Play Store')
+  .action(function(args) {
+    Meteor.build(superEnv, (result) => {
+      Android.prepareApk(superEnv, (result) => {
+        Play.uploadPlayStore(superEnv, (result) => {
+          return
+        })
+      })
+    })
+  });
 
+Vorpal
+  .parse(process.argv);
