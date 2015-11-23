@@ -16,3 +16,5 @@
 
 # ignore fastlane reports
 .fastlane/report.xml
+
+node_modules

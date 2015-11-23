@@ -40,10 +40,14 @@ android_play_store () {
 
 if [[ -z $2 ]]; then
   echo "Please provide a server as the second argument"
+  exit
 fi
 
 echo "Building meteor..."
 meteor build .build --server $2
+echo "Opening Xcode :( ..."
+open $XCODE_PROJECT
+sleep 5
 
 # deploy to TestFlight if 'beta'
 if [[ $1 = "beta" ]]; then
@@ -67,6 +71,9 @@ elif [[ $1 = "play" ]]; then
 elif [[ $1 = "appstore" ]]; then
   echo "Deploying to App Store..."
   fastlane ios deploy
+elif [[ $1 = "build" ]]; then
+  echo "Just building the app..."
+  fastlane ios build
 else
   echo "Done"
 fi
