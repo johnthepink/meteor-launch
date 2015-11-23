@@ -71,4 +71,19 @@ Vorpal
   });
 
 Vorpal
+  .command('production', 'Build and deploy to iTunes and Play')
+  .action(function(args) {
+    Meteor.build(superEnv, (result) => {
+      Android.prepareApk(superEnv, (result) => {
+        Play.uploadPlayStore(superEnv, (result) => {
+          return
+        })
+      })
+      iTunes.uploadAppStore(superEnv, (result) => {
+        return
+      })
+    })
+  });
+
+Vorpal
   .parse(process.argv);
