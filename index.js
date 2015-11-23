@@ -27,12 +27,11 @@ Vorpal
   .command('hockey', 'Build and deploy to Hockey')
   .action(function(args) {
     Meteor.build(superEnv, (result) => {
-      Hockey.uploadIOS(superEnv, (result) => {
-        return
-      })
       Android.prepareApk(superEnv, (result) => {
         Hockey.uploadAndroid(superEnv, (result) => {
-          return
+          Hockey.uploadIOS(superEnv, (result) => {
+            return
+          })
         })
       })
     })
@@ -76,11 +75,10 @@ Vorpal
     Meteor.build(superEnv, (result) => {
       Android.prepareApk(superEnv, (result) => {
         Play.uploadPlayStore(superEnv, (result) => {
-          return
+          iTunes.uploadAppStore(superEnv, (result) => {
+            return
+          })
         })
-      })
-      iTunes.uploadAppStore(superEnv, (result) => {
-        return
       })
     })
   });
