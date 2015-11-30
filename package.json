@@ -1,0 +1,26 @@
+{
+  "name": "meteor-launch",
+  "version": "0.1.0",
+  "description": "Automating meteor builds to the AppStore, TestFlight, Hockey, Google Play, and more later.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NewSpring/meteor-launch.git"
+  },
+  "bin": {
+    "launch": "./index.js"
+  },
+  "author": "johnthepink",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NewSpring/meteor-launch/issues"
+  },
+  "homepage": "https://github.com/NewSpring/meteor-launch#readme",
+  "dependencies": {
+    "underscore": "^1.8.3",
+    "vorpal": "^1.3.34"
+  }
+}

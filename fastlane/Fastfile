@@ -9,40 +9,60 @@
 # By default, fastlane will send which actions are used
 # No personal data is shared, more information on https://github.com/fastlane/enhancer
 # Uncomment the following line to opt out
-# opt_out_usage
+opt_out_usage
 
 # If you want to automatically update fastlane if a new version is available:
-# update_fastlane
+update_fastlane
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
-fastlane_version "1.32.1"
+fastlane_version "1.41.1"
 
 default_platform :ios
 
 
 platform :ios do
-  before_all do
-    ensure_git_status_clean
-  end
 
-  private_lane :build_app do
+  private_lane :build_app_production do
     sigh(
       app_identifier: ENV['APP_IDENTIFIER'],
       username: ENV['APPLE_ID']
     )
 
     update_project_provisioning(
-      xcodeproj: ENV['PROJECT'],
+      xcodeproj: ENV['XCODE_PROJECT'],
       profile: lane_context[SharedValues::SIGH_PROFILE_PATH],
-      target_filter: ENV['SCHEME'],
+      target_filter: ENV['XCODE_SCHEME'],
+      build_configuration: "Release"
+    )
+
+    gym(
+      scheme: ENV['XCODE_SCHEME'],
+      project: ENV['XCODE_PROJECT'],
+      include_bitcode: false
+    )
+  end
+
+  private_lane :build_app_ad_hoc do
+    sigh(
+      app_identifier: ENV['APP_IDENTIFIER'],
+      username: ENV['APPLE_ID'],
+      adhoc: true
+    )
+
+    update_project_provisioning(
+      xcodeproj: ENV['XCODE_PROJECT'],
+      profile: lane_context[SharedValues::SIGH_PROFILE_PATH],
+      target_filter: ENV['XCODE_SCHEME'],
       build_configuration: "Release"
     )
 
     gym(
       use_legacy_build_api: true,
-      scheme: ENV['SCHEME'],
-      project: ENV['PROJECT']
+      scheme: ENV['XCODE_SCHEME'],
+      project: ENV['XCODE_PROJECT'],
+      include_bitcode: false,
+      export_method: "ad-hoc"
     )
   end
 
@@ -51,12 +71,17 @@ platform :ios do
     snapshot
   end
 
+  desc "Just build the app"
+  lane :build do
+    build_app_production
+  end
+
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :beta do
     # snapshot
 
-    build_app
+    build_app_production
 
     pilot(
       username: ENV['APPLE_ID']
@@ -68,7 +93,7 @@ platform :ios do
   lane :hockey do
     # snapshot
 
-    build_app
+    build_app_ad_hoc
 
     hockey(
       api_token: ENV['IOS_HOCKEY_TOKEN']
@@ -80,7 +105,7 @@ platform :ios do
   lane :deploy do
     # snapshot
 
-    build_app
+    build_app_production
 
     deliver(
       username: ENV['APPLE_ID'],
@@ -90,21 +115,18 @@ platform :ios do
   end
 
   after_all do |lane|
-    hipchat(
-      message: "App successfully released!",
-      message_format: "html",
-      channel: ENV['HIPCHAT_ROOM'],
-      from: "fastlane",
-      success: true
+    slack(
+      message: "App successfully released through: #{lane}",
+      channel: ENV['SLACK_ROOM'],
+      slack_url: ENV['SLACK_URL']
     )
   end
 
   error do |lane, exception|
-    hipchat(
+    slack(
       message: "Lane #{lane} failed! #{exception}",
-      message_format: "html",
-      channel: ENV['HIPCHAT_ROOM'],
-      from: "fastlane",
+      channel: ENV['SLACK_ROOM'],
+      slack_url: ENV['SLACK_URL'],
       success: false
     )
   end

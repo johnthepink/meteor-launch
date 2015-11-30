@@ -1,18 +1,1 @@
-# environment vars
-.fastlane/.env
-
-# screenshots
-.fastlane/screenshots
-
-# meteor build folder
-.build
-
-# xcode builds
-*.ipa
-*.dSYM.zip
-
-# apple certs
-*.mobileprovision
-
-# ignore fastlane reports
-.fastlane/report.xml
+node_modules

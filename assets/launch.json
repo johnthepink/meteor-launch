@@ -1,0 +1,19 @@
+{
+  "XCODE_SCHEME": "SchemeName",
+  "XCODE_PROJECT": "/absolute/path/to/project.xcodeproj",
+  "APP_IDENTIFIER": "com.example.app",
+  "APPLE_ID": "you@apple.com",
+  "HIPCHAT_API_TOKEN": "xxx",
+  "HIPCHAT_API_VERSION": "xxx",
+  "HIPCHAT_ROOM": "xxx",
+  "SLACK_URL": "https://hooks.slack.com/services/something",
+  "SLACK_ROOM": "#room",
+  "ANDROID_BUILD": "/absolute/path/to/android/build/folder",
+  "ANDROID_STORE_PASS": "password",
+  "ANDROID_KEY": "key",
+  "ANDROID_ZIPALIGN": "/absolute/path/to/android/home/zipalign",
+  "IOS_HOCKEY_TOKEN": "xxx",
+  "ANDROID_HOCKEY_TOKEN": "xxx",
+  "ANDROID_HOCKEY_ID": "xxx",
+  "PLAY_API_KEY": "xxx"
+}
