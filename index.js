@@ -11,9 +11,12 @@ const Meteor = require('./lib/meteor'),
       Android = require('./lib/android'),
       Play = require('./lib/play');
 
-const launchFile = Path.join(process.cwd(), 'launch.json');
-const launchVars = require(launchFile);
-const superEnv = _.extend(launchVars, process.env);
+const launchFile = Path.join(process.cwd(), 'launch.json'),
+      launchVars = require(launchFile),
+      fastFile = {
+        FL_FASTFILE: Path.join(__dirname, "fastlane")
+      },
+      superEnv = _.extend(launchVars, fastFile, process.env);
 
 Vorpal
   .command('build', 'Builds the Meteor app in the .build folder')
