@@ -12,15 +12,18 @@ const Meteor = require('./lib/meteor'),
       Play = require('./lib/play'),
       Util = require('./lib/util');
 
-let launchFile, launchVars, fastFile, superEnv;
+let launchFile, launchVars, otherVars, superEnv;
 
 if (Util.launchFile()) {
   launchFile = Path.join(process.cwd(), 'launch.json');
   launchVars = require(launchFile);
-  fastFile = {
-    FL_FASTFILE: Path.join(__dirname, "fastlane")
+  otherVars = {
+    FL_FASTFILE: Path.join(__dirname, 'fastlane'),
+    SIGH_OUTPUT_PATH: process.cwd(),
+    GYM_OUTPUT_DIRECTORY: process.cwd(),
+    FL_REPORT_PATH: Path.join(process.cwd(), '.build', 'ios')
   };
-  superEnv = _.extend(launchVars, fastFile, process.env);
+  superEnv = _.extend(launchVars, otherVars, process.env);
 }
 
 Vorpal
