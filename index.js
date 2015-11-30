@@ -9,14 +9,27 @@ const Meteor = require('./lib/meteor'),
       Hockey = require('./lib/hockey'),
       iTunes = require('./lib/iTunes'),
       Android = require('./lib/android'),
-      Play = require('./lib/play');
+      Play = require('./lib/play'),
+      Util = require('./lib/util');
 
-const launchFile = Path.join(process.cwd(), 'launch.json'),
-      launchVars = require(launchFile),
-      fastFile = {
-        FL_FASTFILE: Path.join(__dirname, "fastlane")
-      },
-      superEnv = _.extend(launchVars, fastFile, process.env);
+let launchFile, launchVars, fastFile, superEnv;
+
+if (Util.launchFile()) {
+  launchFile = Path.join(process.cwd(), 'launch.json');
+  launchVars = require(launchFile);
+  fastFile = {
+    FL_FASTFILE: Path.join(__dirname, "fastlane")
+  };
+  superEnv = _.extend(launchVars, fastFile, process.env);
+}
+
+Vorpal
+  .command('init', 'Generates launch.json file for environment vars')
+  .action(function(args) {
+    Util.init(superEnv, (result) => {
+      console.log(result);
+    })
+  });
 
 Vorpal
   .command('build', 'Builds the Meteor app in the .build folder')
