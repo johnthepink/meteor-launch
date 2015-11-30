@@ -4,16 +4,6 @@ Automating meteor builds to the AppStore, TestFlight, Hockey, Google Play, and m
 
 ## Before you build
 
-First, clone all these files in to your meteor project. The fastlane files are in the `.fastlane` directory, so meteor will ignore them.
-
-### Fastlane
-
-Install fastlane:
-
-~~~
-sudo gem install fastlane
-~~~
-
 ### Android
 
 Install the [Android SDK](https://developer.android.com/sdk/index.html), then set your `$ANDROID_HOME` in your `.bashrc` or `.zshrc`:
@@ -38,92 +28,66 @@ npm install -g playup
 
 ### mobile-config.js
 
-Open `mobile-config.js` and fill out all your info.
+Make sure you have a proper Meteor `mobile-config.js` file.
 
-### Environment Variables
+### init
 
-Copy and set all your environment variables:
+Create a `launch.json` file, and install `fastlane` if you don't have it:
 
-~~~
-cp .fastlane/.env.example .fastlane/.env
-~~~
+```
+launch init
+```
 
-### cordova-ios-requires-fullscreen
+...then fill out the vars in `.launch.json`.
 
-iOS9 introduced the split screen stuff for iPad, which means we either have to specify how to handle that or require fullscreen. You can fix this with [cordova-ios-requires-fullscreen](https://www.npmjs.com/package/cordova-ios-requires-fullscreen)
-
-~~~
-meteor add cordova:cordova-ios-requires-fullscreen@0.0.2
-~~~
-
-## Deploying
-
-### Version/Build
+## Commands
 
 *Before building, you should adjust your version and build number accordingly in `mobile-config.js`.*
 
-### Metadata
+### build
 
-You can use the files in the `.fastlane/metadata` folder to edit the data that will be uploaded to iTunesConnect.
+This will just build your app:
 
-### TestFlight
+```
+launch build server.com
+```
 
-This command will:
+### hockey
 
-- build meteor
-- build app archive
-- generate screenshots
-- install provisioning profile
-- upload to TestFlight
-- take forever
-- ping hipchat
-- alert testers
+This will build and deploy to Hockey:
 
-~~~
-./launch beta servername.com
-~~~
+```
+launch hockey server.com
+```
 
-### Hockey
+### testflight
 
-This command will:
+This will build and deploy to TestFlight:
 
-- build meteor
-- build ios app archive
-- generate ios screenshots
-- install ios provisioning profile
-- upload to Hockey
-- sign and align android apk
-- upload to Hockey
-- ping hipchat
-- alert testers
+```
+launch testflight server.com
+```
 
-~~~
-./launch hockey servername.com
-~~~
+### appstore
 
-### AppStore / Google Play
+This will build and deploy to iTunes:
 
-This command will:
+```
+launch appstore server.com
+```
 
-- build meteor
-- sign and align apk
-- upload to play store
-- build app archive
-- generate screenshots
-- install provisioning profile
-- upload screenshots
-- upload to AppStore
-- take forever
-- ping hipchat
-- alert testers
+### playstore
 
-~~~
-./launch deploy servername.com
-~~~
+This will build and deploy to Google Play:
 
-To just deploy to App Store or Google Play, use the respective argument:
+```
+launch playstore server.com
+```
 
-~~~
-./launch play servername.com
-./launch appstore servername.com
-~~~
+### production
+
+This will build and deploy to iTunes and Google Play:
+
+```
+launch production server.com
+```
