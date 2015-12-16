@@ -9,10 +9,10 @@
 # By default, fastlane will send which actions are used
 # No personal data is shared, more information on https://github.com/fastlane/enhancer
 # Uncomment the following line to opt out
-opt_out_usage
+# opt_out_usage
 
 # If you want to automatically update fastlane if a new version is available:
-update_fastlane
+# update_fastlane
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
@@ -115,20 +115,20 @@ platform :ios do
   end
 
   after_all do |lane|
-    slack(
-      message: "App successfully released through: #{lane}",
-      channel: ENV['SLACK_ROOM'],
-      slack_url: ENV['SLACK_URL']
-    )
+    # slack(
+    #   message: "App successfully released through: #{lane}",
+    #   channel: ENV['SLACK_ROOM'],
+    #   slack_url: ENV['SLACK_URL']
+    # )
   end
 
   error do |lane, exception|
-    slack(
-      message: "Lane #{lane} failed! #{exception}",
-      channel: ENV['SLACK_ROOM'],
-      slack_url: ENV['SLACK_URL'],
-      success: false
-    )
+    # slack(
+    #   message: "Lane #{lane} failed! #{exception}",
+    #   channel: ENV['SLACK_ROOM'],
+    #   slack_url: ENV['SLACK_URL'],
+    #   success: false
+    # )
   end
 end
 
