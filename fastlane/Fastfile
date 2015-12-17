@@ -23,6 +23,10 @@ default_platform :ios
 
 platform :ios do
 
+  before_all do
+    ENV['KEYCHAIN_NAME'] = "TempKeychain.keychain"
+  end
+
   private_lane :build_app_production do
     sigh(
       app_identifier: ENV['APP_IDENTIFIER'],
@@ -93,6 +97,8 @@ platform :ios do
   lane :hockey do
     # snapshot
 
+    import_certificates
+
     build_app_ad_hoc
 
     hockey(
@@ -129,6 +135,30 @@ platform :ios do
     #   slack_url: ENV['SLACK_URL'],
     #   success: false
     # )
+  end
+
+  def import_certificates
+    return unless Helper.is_ci? # As in my local machine I don't need to import the certificates, only run if it's in the CI
+
+    create_keychain(
+      name: ENV["KEYCHAIN_NAME"],
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      lock_when_sleeps: true,
+      password: ENV["KEYCHAIN_PASSWORD"]
+    )
+
+    # import_certificate(
+    #   certificate_path: "fastlane/certificates/distribution.p12",
+    #   certificate_password: ENV['CERT_PASSWORD'],
+    #   keychain_name: ENV["KEYCHAIN_NAME"]
+    # )
+
+    import_certificate(
+      certificate_path: "fastlane/certificates/ios_distribution.cer",
+      keychain_name: ENV["KEYCHAIN_NAME"]
+    )
   end
 end
 
