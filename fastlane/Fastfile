@@ -49,15 +49,15 @@ platform :ios do
   end
 
   private_lane :build_app_ad_hoc do
-    sigh(
-      app_identifier: ENV['APP_IDENTIFIER'],
-      username: ENV['APPLE_ID'],
-      adhoc: true
-    )
+    # sigh(
+    #   app_identifier: ENV['APP_IDENTIFIER'],
+    #   username: ENV['APPLE_ID'],
+    #   adhoc: true
+    # )
 
     update_project_provisioning(
       xcodeproj: ENV['XCODE_PROJECT'],
-      profile: lane_context[SharedValues::SIGH_PROFILE_PATH],
+      profile: ENV['PROVISIONING_PROFILE'],
       target_filter: ENV['XCODE_SCHEME_NAME'],
       build_configuration: "Release"
     )
