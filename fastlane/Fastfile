@@ -35,14 +35,14 @@ platform :ios do
 
     update_project_provisioning(
       xcodeproj: ENV['XCODE_PROJECT'],
-      scheme: ENV['XCODE_SCHEME'],
+      scheme: ENV['XCODE_SCHEME_NAME'],
       profile: lane_context[SharedValues::SIGH_PROFILE_PATH],
-      target_filter: ENV['XCODE_SCHEME'],
+      target_filter: ENV['XCODE_SCHEME_NAME'],
       build_configuration: "Release"
     )
 
     gym(
-      scheme: ENV['XCODE_SCHEME'],
+      scheme: ENV['XCODE_SCHEME_NAME'],
       project: ENV['XCODE_PROJECT'],
       include_bitcode: false
     )
@@ -58,13 +58,13 @@ platform :ios do
     update_project_provisioning(
       xcodeproj: ENV['XCODE_PROJECT'],
       profile: lane_context[SharedValues::SIGH_PROFILE_PATH],
-      target_filter: ENV['XCODE_SCHEME'],
+      target_filter: ENV['XCODE_SCHEME_NAME'],
       build_configuration: "Release"
     )
 
     gym(
       use_legacy_build_api: true,
-      scheme: ENV['XCODE_SCHEME'],
+      scheme: ENV['XCODE_SCHEME_NAME'],
       project: ENV['XCODE_PROJECT'],
       include_bitcode: false,
       export_method: "ad-hoc"

@@ -1,5 +1,5 @@
 {
-  "XCODE_SCHEME": "SchemeName",
+  "XCODE_SCHEME_NAME": "SchemeName",
   "XCODE_PROJECT": "/absolute/path/to/project.xcodeproj",
   "APP_IDENTIFIER": "com.example.app",
   "APPLE_ID": "you@apple.com",
