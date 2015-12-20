@@ -156,7 +156,7 @@ platform :ios do
     # )
 
     import_certificate(
-      certificate_path: "./.remote/settings/sites/app.newspring.io/ios_distribution.cer",
+      certificate_path: ENV["CERT_PATH"],
       keychain_name: ENV["KEYCHAIN_NAME"]
     )
   end
