@@ -150,11 +150,11 @@ platform :ios do
       password: ENV["KEYCHAIN_PASSWORD"]
     )
 
-    # import_certificate(
-    #   certificate_path: "fastlane/certificates/distribution.p12",
-    #   certificate_password: ENV['CERT_PASSWORD'],
-    #   keychain_name: ENV["KEYCHAIN_NAME"]
-    # )
+    import_certificate(
+      certificate_path: ENV['CERT_KEY_PATH'],
+      certificate_password: ENV['CERT_PASSWORD'],
+      keychain_name: ENV["KEYCHAIN_NAME"]
+    )
 
     import_certificate(
       certificate_path: ENV["CERT_PATH"],
