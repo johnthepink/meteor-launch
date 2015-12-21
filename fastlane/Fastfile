@@ -104,7 +104,8 @@ platform :ios do
     build_app_ad_hoc
 
     hockey(
-      api_token: ENV['IOS_HOCKEY_TOKEN']
+      api_token: ENV['IOS_HOCKEY_TOKEN'],
+      notify: 0
     )
   end
 
