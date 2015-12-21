@@ -27,6 +27,10 @@ platform :ios do
     ENV['KEYCHAIN_NAME'] = "TempKeychain.keychain"
   end
 
+  lane :import do
+    import_certificates
+  end
+
   private_lane :build_app_production do
     sigh(
       app_identifier: ENV['APP_IDENTIFIER'],
@@ -99,7 +103,7 @@ platform :ios do
   lane :hockey do
     # snapshot
 
-    import_certificates
+    # import_certificates
 
     build_app_ad_hoc
 

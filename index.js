@@ -35,6 +35,14 @@ Vorpal
   });
 
 Vorpal
+  .command('import', 'Import certificates')
+  .action(function(args) {
+    Util.importCerts(superEnv, (result) => {
+      return
+    })
+  });
+
+Vorpal
   .command('build', 'Builds the Meteor app in the .build folder')
   .action(function(args) {
     Meteor.build(superEnv, (result) => {
