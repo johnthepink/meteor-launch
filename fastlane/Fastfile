@@ -52,7 +52,8 @@ platform :ios do
     sigh(
       app_identifier: ENV['APP_IDENTIFIER'],
       username: ENV['APPLE_ID'],
-      adhoc: true
+      adhoc: true,
+      skip_certificate_verification: true
     )
 
     update_project_provisioning(
