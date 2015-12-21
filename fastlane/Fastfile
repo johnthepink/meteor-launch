@@ -161,10 +161,10 @@ platform :ios do
       keychain_name: ENV["KEYCHAIN_NAME"]
     )
 
-    import_certificate(
-      certificate_path: ENV["CERT_PATH"],
-      keychain_name: ENV["KEYCHAIN_NAME"]
-    )
+    #import_certificate(
+    #  certificate_path: ENV["CERT_PATH"],
+    #  keychain_name: ENV["KEYCHAIN_NAME"]
+    #)
   end
 end
 
