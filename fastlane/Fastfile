@@ -27,10 +27,6 @@ platform :ios do
     ENV['KEYCHAIN_NAME'] = "TempKeychain.keychain"
   end
 
-  lane :import do
-    import_certificates
-  end
-
   private_lane :build_app_production do
     sigh(
       app_identifier: ENV['APP_IDENTIFIER'],
@@ -103,7 +99,7 @@ platform :ios do
   lane :hockey do
     # snapshot
 
-    # import_certificates
+    import_certificates
 
     build_app_ad_hoc
 
@@ -127,20 +123,20 @@ platform :ios do
   end
 
   after_all do |lane|
-    # slack(
-    #   message: "App successfully released through: #{lane}",
-    #   channel: ENV['SLACK_ROOM'],
-    #   slack_url: ENV['SLACK_URL']
-    # )
+    slack(
+      message: "App successfully released through: #{lane}",
+      channel: ENV['SLACK_ROOM'],
+      slack_url: ENV['SLACK_URL']
+    )
   end
 
   error do |lane, exception|
-    # slack(
-    #   message: "Lane #{lane} failed! #{exception}",
-    #   channel: ENV['SLACK_ROOM'],
-    #   slack_url: ENV['SLACK_URL'],
-    #   success: false
-    # )
+    slack(
+      message: "Lane #{lane} failed! #{exception}",
+      channel: ENV['SLACK_ROOM'],
+      slack_url: ENV['SLACK_URL'],
+      success: false
+    )
   end
 
   def import_certificates
@@ -161,10 +157,6 @@ platform :ios do
       keychain_name: ENV["KEYCHAIN_NAME"]
     )
 
-    #import_certificate(
-    #  certificate_path: ENV["CERT_PATH"],
-    #  keychain_name: ENV["KEYCHAIN_NAME"]
-    #)
   end
 end
 
