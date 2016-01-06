@@ -35,7 +35,6 @@ platform :ios do
 
     update_project_provisioning(
       xcodeproj: ENV['XCODE_PROJECT'],
-      scheme: ENV['XCODE_SCHEME_NAME'],
       profile: lane_context[SharedValues::SIGH_PROFILE_PATH],
       target_filter: ENV['XCODE_SCHEME_NAME'],
       build_configuration: "Release"
