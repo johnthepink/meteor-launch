@@ -8,7 +8,7 @@
   "HIPCHAT_ROOM": "xxx",
   "SLACK_URL": "https://hooks.slack.com/services/something",
   "SLACK_ROOM": "#room",
-  "ANDROID_BUILD": "/absolute/path/to/android/build/folder",
+  "ANDROID_BUILD_FOLDER": "/absolute/path/to/android/build/folder",
   "ANDROID_STORE_PASS": "password",
   "ANDROID_KEY": "key",
   "ANDROID_ZIPALIGN": "/absolute/path/to/android/home/zipalign",
