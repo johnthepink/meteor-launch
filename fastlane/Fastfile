@@ -86,6 +86,8 @@ platform :ios do
   lane :beta do
     # snapshot
 
+    import_certificates
+
     build_app_production
 
     pilot(
