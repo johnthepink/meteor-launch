@@ -105,7 +105,8 @@ platform :ios do
 
     hockey(
       api_token: ENV['IOS_HOCKEY_TOKEN'],
-      notify: "0"
+      notify: "0",
+      status: "1"
     )
   end
 
