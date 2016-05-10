@@ -35,7 +35,6 @@ platform :ios do
 
     update_project_provisioning(
       xcodeproj: ENV['XCODE_PROJECT'],
-      scheme: ENV['XCODE_SCHEME_NAME'],
       profile: lane_context[SharedValues::SIGH_PROFILE_PATH],
       target_filter: ENV['XCODE_SCHEME_NAME'],
       build_configuration: "Release"
@@ -86,6 +85,8 @@ platform :ios do
   desc "This will also make sure the profile is up to date"
   lane :beta do
     # snapshot
+
+    import_certificates
 
     build_app_production
 
