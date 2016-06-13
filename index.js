@@ -53,7 +53,7 @@ Vorpal
 Vorpal
   .command('hockey', 'Build and deploy to Hockey')
   .action(function(args) {
-    Meteor.build(superEnv, (result) => {
+    // Meteor.build(superEnv, (result) => {
       Android.prepareApk(superEnv, (result) => {
         Hockey.uploadAndroid(superEnv, (result) => {
           Hockey.uploadIOS(superEnv, (result) => {
@@ -61,7 +61,7 @@ Vorpal
           })
         })
       })
-    })
+    // })
   });
 
 Vorpal
