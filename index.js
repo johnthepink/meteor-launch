@@ -67,11 +67,11 @@ Vorpal
 Vorpal
   .command('testflight', 'Build and deploy to TestFlight')
   .action(function(args) {
-    Meteor.build(superEnv, (result) => {
+    // Meteor.build(superEnv, (result) => {
       iTunes.uploadTestFlight(superEnv, (result) => {
         return
       })
-    })
+    // })
   });
 
 Vorpal
