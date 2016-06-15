@@ -18,7 +18,6 @@ if (Util.launchFile()) {
   launchFile = Path.join(process.cwd(), 'launch.json');
   launchVars = require(launchFile);
   otherVars = {
-    FL_FASTFILE: Path.join(__dirname, 'fastlane'),
     SIGH_OUTPUT_PATH: process.cwd(),
     GYM_OUTPUT_DIRECTORY: process.cwd(),
     FL_REPORT_PATH: Path.join(process.cwd(), '.build', 'ios')
