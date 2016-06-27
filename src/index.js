@@ -35,83 +35,67 @@ Launch
 Launch
   .command("init", "Generates launch.json file for environment vars")
   .action((args) => {
-    Util.init(superEnv, (result) => {
-      console.log(result);
-    })
+    Util.init(superEnv)
+      .then(result => console.log(result))
+      .catch(error => console.log(error));
   });
 
 Launch
   .command("import", "Import certificates")
   .action((args) => {
-    Util.importCerts(superEnv, (result) => {
-      return
-    })
+    Util.importCerts(superEnv)
+      .catch(error => console.log(error));
   });
 
 Launch
   .command("build", "Builds the Meteor app in the .build folder")
   .action((args) => {
-    Meteor.build(superEnv, (result) => {
-      return
-    })
+    Meteor.build(superEnv)
+      .catch(error => console.log(error));
   });
 
 Launch
   .command("hockey", "Build and deploy to Hockey")
   .action((args) => {
-    Util.addFastfile(superEnv, (result) => {
-      Android.prepareApk(superEnv, (result) => {
-        Hockey.uploadAndroid(superEnv, (result) => {
-          Hockey.uploadIOS(superEnv, (result) => {
-            return
-          })
-        })
-      })
-    })
+    Util.addFastFile(superEnv)
+      .then(() => Android.prepareApk(superEnv))
+      .then(() => Hockey.uploadAndroid(superEnv))
+      .then(() => Hockey.uploadIOS(superEnv))
+      .catch(error => console.log(error));
   });
 
 Launch
   .command("testflight", "Build and deploy to TestFlight")
   .action((args) => {
-    Util.addFastfile(superEnv, (result) => {
-      iTunes.uploadTestFlight(superEnv, (result) => {
-        return
-      })
-    })
+    Util.addFastfile(superEnv)
+      .then(() => iTunes.uploadTestFlight(superEnv))
+      .catch(error => console.log(error));
   });
 
 Launch
   .command("appstore", "Build and deploy to iTunes App Store")
   .action((args) => {
-    Util.addFastfile(superEnv, (result) => {
-      iTunes.uploadAppStore(superEnv, (result) => {
-        return
-      })
-    })
+    Util.addFastfile(superEnv)
+      .then(() => iTunes.uploadAppStore(superEnv))
+      .catch(error => console.log(error));
   });
 
 Launch
   .command("playstore", "Build and deploy to Google Play Store")
   .action((args) => {
-    Android.prepareApk(superEnv, (result) => {
-      Play.uploadPlayStore(superEnv, (result) => {
-        return
-      })
-    })
+    Android.prepareApk(superEnv)
+      .then(() => Play.uploadPlayStore(superEnv))
+      .catch(error => console.log(error));
   });
 
 Launch
   .command("production", "Build and deploy to iTunes and Play")
   .action((args) => {
-    Util.addFastfile(superEnv, (result) => {
-      Android.prepareApk(superEnv, (result) => {
-        Play.uploadPlayStore(superEnv, (result) => {
-          iTunes.uploadAppStore(superEnv, (result) => {
-            return
-          })
-        })
-      })
-    })
+    Util.addFastfile(superEnv)
+      .then(() => Android.prepareApk(superEnv))
+      .then(() => Play.uploadPlayStore(superEnv))
+      .then(() => iTunes.uploadAppStore(superEnv))
+      .catch(error => console.log(error));
   });
 
 Launch
