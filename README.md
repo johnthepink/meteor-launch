@@ -1,5 +1,7 @@
 # Meteor Launch
 
+[![Build Status](https://travis-ci.org/NewSpring/meteor-launch.svg?branch=master)](https://travis-ci.org/NewSpring/meteor-launch)
+
 Automating meteor builds to the AppStore, TestFlight, Hockey, Google Play, and more later.
 
 ## Before you build
