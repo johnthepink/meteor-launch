@@ -5,12 +5,12 @@ const Vorpal = require('vorpal')(),
       Path = require('path'),
       _ = require('underscore');
 
-const Meteor = require('./lib/meteor'),
-      Hockey = require('./lib/hockey'),
-      iTunes = require('./lib/iTunes'),
-      Android = require('./lib/android'),
-      Play = require('./lib/play'),
-      Util = require('./lib/util');
+const Meteor = require('./meteor'),
+      Hockey = require('./hockey'),
+      iTunes = require('./iTunes'),
+      Android = require('./android'),
+      Play = require('./play'),
+      Util = require('./util');
 
 let launchFile, launchVars, otherVars, superEnv;
 
@@ -24,6 +24,12 @@ if (Util.launchFile()) {
   };
   superEnv = _.extend(launchVars, otherVars, process.env);
 }
+
+Vorpal
+  .command('test', 'test the thing')
+  .action(function(args) {
+    console.log('testing');
+  });
 
 Vorpal
   .command('init', 'Generates launch.json file for environment vars')

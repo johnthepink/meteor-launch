@@ -2,7 +2,7 @@
   "name": "meteor-launch",
   "version": "0.1.0",
   "description": "Automating meteor builds to the AppStore, TestFlight, Hockey, Google Play, and more later.",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/NewSpring/meteor-launch.git"
   },
   "bin": {
-    "launch": "./index.js"
+    "launch": "./src/index.js"
   },
   "author": "johnthepink",
   "license": "ISC",
