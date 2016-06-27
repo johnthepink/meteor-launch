@@ -1,6 +1,6 @@
 import { execSync as ExecSync } from "child_process";
 
-function uploadIOS(env, cb) {
+const uploadIOS = (env, cb) => {
   console.log("Uploading to Hockey...");
 
   ExecSync("fastlane ios hockey", {
@@ -10,7 +10,7 @@ function uploadIOS(env, cb) {
   cb();
 }
 
-function uploadAndroid(env, cb) {
+const uploadAndroid = (env, cb) => {
   console.log("Uploading to Hockey");
 
   const uploadCommand = `

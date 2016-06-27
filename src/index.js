@@ -28,13 +28,13 @@ if (Util.launchFile()) {
 
 Launch
   .command("test", "test the thing")
-  .action(function(args) {
+  .action((args) => {
     console.log("testing");
   });
 
 Launch
   .command("init", "Generates launch.json file for environment vars")
-  .action(function(args) {
+  .action((args) => {
     Util.init(superEnv, (result) => {
       console.log(result);
     })
@@ -42,7 +42,7 @@ Launch
 
 Launch
   .command("import", "Import certificates")
-  .action(function(args) {
+  .action((args) => {
     Util.importCerts(superEnv, (result) => {
       return
     })
@@ -50,7 +50,7 @@ Launch
 
 Launch
   .command("build", "Builds the Meteor app in the .build folder")
-  .action(function(args) {
+  .action((args) => {
     Meteor.build(superEnv, (result) => {
       return
     })
@@ -58,7 +58,7 @@ Launch
 
 Launch
   .command("hockey", "Build and deploy to Hockey")
-  .action(function(args) {
+  .action((args) => {
     Util.addFastfile(superEnv, (result) => {
       Android.prepareApk(superEnv, (result) => {
         Hockey.uploadAndroid(superEnv, (result) => {
@@ -72,7 +72,7 @@ Launch
 
 Launch
   .command("testflight", "Build and deploy to TestFlight")
-  .action(function(args) {
+  .action((args) => {
     Util.addFastfile(superEnv, (result) => {
       iTunes.uploadTestFlight(superEnv, (result) => {
         return
@@ -82,7 +82,7 @@ Launch
 
 Launch
   .command("appstore", "Build and deploy to iTunes App Store")
-  .action(function(args) {
+  .action((args) => {
     Util.addFastfile(superEnv, (result) => {
       iTunes.uploadAppStore(superEnv, (result) => {
         return
@@ -92,7 +92,7 @@ Launch
 
 Launch
   .command("playstore", "Build and deploy to Google Play Store")
-  .action(function(args) {
+  .action((args) => {
     Android.prepareApk(superEnv, (result) => {
       Play.uploadPlayStore(superEnv, (result) => {
         return
@@ -102,7 +102,7 @@ Launch
 
 Launch
   .command("production", "Build and deploy to iTunes and Play")
-  .action(function(args) {
+  .action((args) => {
     Util.addFastfile(superEnv, (result) => {
       Android.prepareApk(superEnv, (result) => {
         Play.uploadPlayStore(superEnv, (result) => {

@@ -1,6 +1,6 @@
 import { execSync as ExecSync } from "child_process";
 
-function prepareApk(env, cb) {
+const prepareApk = (env, cb) => {
   console.log("Removing existing apk...");
   try {
     ExecSync("rm $ANDROID_BUILD_FOLDER/production.apk", {

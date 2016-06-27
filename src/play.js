@@ -1,6 +1,6 @@
 import { execSync as ExecSync } from "child_process";
 
-function uploadPlayStore(env, cb) {
+const uploadPlayStore = (env, cb) => {
 
   console.log('Uploading to Google Play Store...');
   const playCommand = `

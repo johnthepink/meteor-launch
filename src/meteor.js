@@ -1,6 +1,6 @@
 import { execSync as ExecSync } from "child_process";
 
-function build(env, cb) {
+const build = (env, cb) => {
   let meteorPath = process.cwd();
   let meteorServer = process.argv[1];
 

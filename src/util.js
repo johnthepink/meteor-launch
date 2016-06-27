@@ -2,7 +2,7 @@ import Path from "path";
 import Fs from "fs";
 import { execSync as ExecSync } from "child_process";
 
-function init(env, cb) {
+const init = (env, cb) => {
   const launchFile = Path.join(process.cwd(), "launch.json");
 
   try {
@@ -35,7 +35,7 @@ function init(env, cb) {
   });
 }
 
-function launchFile() {
+const launchFile = () => {
   // fail silently if trying to init
   if (process.argv[2] === "init") return;
   try {
@@ -48,7 +48,7 @@ function launchFile() {
   return true
 }
 
-function addFastfile(env, cb) {
+const addFastfile = (env, cb) => {
   const fastfileLocation = Path.join(__dirname, "..", "fastlane", "Fastfile");
   const fastfileTarget = Path.join(process.cwd(), "Fastfile");
 
@@ -58,14 +58,14 @@ function addFastfile(env, cb) {
   cb("Fastfile written...");
 }
 
-function removeFastfile(env, cb) {
+const removeFastfile = (env, cb) => {
   const fastfileTarget = Path.join(process.cwd(), "Fastfile");
 
   Fs.unlinkSync(fastfileTarget);
   cb("Fastfile deleted...");
 }
 
-function importCerts(env, cb) {
+const importCerts = (env, cb) => {
   console.log("Importing certs...");
 
   ExecSync("fastlane import", {

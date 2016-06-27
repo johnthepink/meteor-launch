@@ -1,6 +1,6 @@
 import { execSync as ExecSync } from "child_process";
 
-function uploadTestFlight(env, cb) {
+const uploadTestFlight = (env, cb) => {
   console.log('Uploading to TestFlight...');
 
   ExecSync('fastlane ios beta', {
@@ -10,7 +10,7 @@ function uploadTestFlight(env, cb) {
   cb();
 }
 
-function uploadAppStore(env, cb) {
+const uploadAppStore = (env, cb) => {
   console.log('Uploading to iTunes...');
 
   ExecSync('fastlane ios deploy', {
