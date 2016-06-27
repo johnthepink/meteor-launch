@@ -5,7 +5,8 @@
   "main": "./lib/index.js",
   "scripts": {
     "build": "./node_modules/.bin/babel src -d lib",
-    "watch": "./node_modules/.bin/babel src --watch -d lib"
+    "watch": "./node_modules/.bin/babel src --watch -d lib",
+    "lint": "./node_modules/.bin/eslint src"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,9 @@
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
-    "babel-preset-es2015": "^6.9.0"
+    "babel-preset-es2015": "^6.9.0",
+    "eslint": "^2.13.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.9.2"
   }
 }
