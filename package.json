@@ -5,7 +5,8 @@
   "main": "./lib/index.js",
   "scripts": {
     "build": "./node_modules/.bin/babel src -d lib",
-    "watch": "./node_modules/.bin/babel src --watch -d lib"
+    "watch": "./node_modules/.bin/babel src --watch -d lib",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
