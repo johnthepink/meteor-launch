@@ -21,7 +21,9 @@ if (Util.launchFile()) {
   otherVars = {
     SIGH_OUTPUT_PATH: process.cwd(),
     GYM_OUTPUT_DIRECTORY: process.cwd(),
-    FL_REPORT_PATH: Path.join(process.cwd(), ".build", "ios")
+    FL_REPORT_PATH: Path.join(process.cwd(), ".build", "ios"),
+    // convert relative paths to abslute
+    XCODE_PROJECT: Path.resolve(launchVars.XCODE_PROJECT),
   };
   superEnv = extend(launchVars, otherVars, process.env);
 }
