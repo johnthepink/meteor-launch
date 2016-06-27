@@ -55,11 +55,13 @@ const launchFile = () => {
 const addFastfile = () => {
   return new Promise((resolve, reject) => {
     const fastfileLocation = Path.join(__dirname, "..", "fastlane", "Fastfile");
-    const fastfileTarget = Path.join(process.cwd(), "Fastfile");
+    const fastfileTarget = Path.join(process.cwd(), ".fastlane");
+
+    Fs.mkdirSync(fastfileTarget);
 
     let contents = Fs.readFileSync(fastfileLocation);
 
-    Fs.writeFileSync(fastfileTarget, contents);
+    Fs.writeFileSync(`${fastfileTarget}/Fastfile`, contents);
 
     return resolve("Fastfile written...");
   });
@@ -67,7 +69,7 @@ const addFastfile = () => {
 
 const removeFastfile = () => {
   return new Promise((resolve, reject) => {
-    const fastfileTarget = Path.join(process.cwd(), "Fastfile");
+    const fastfileTarget = Path.join(process.cwd(), ".fastlane", "Fastfile");
 
     Fs.unlinkSync(fastfileTarget);
 
