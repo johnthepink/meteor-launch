@@ -52,7 +52,7 @@ Vorpal
 Vorpal
   .command('hockey', 'Build and deploy to Hockey')
   .action(function(args) {
-    // Meteor.build(superEnv, (result) => {
+    Util.addFastfile(superEnv, (result) => {
       Android.prepareApk(superEnv, (result) => {
         Hockey.uploadAndroid(superEnv, (result) => {
           Hockey.uploadIOS(superEnv, (result) => {
@@ -60,23 +60,23 @@ Vorpal
           })
         })
       })
-    // })
+    })
   });
 
 Vorpal
   .command('testflight', 'Build and deploy to TestFlight')
   .action(function(args) {
-    // Meteor.build(superEnv, (result) => {
+    Util.addFastfile(superEnv, (result) => {
       iTunes.uploadTestFlight(superEnv, (result) => {
         return
       })
-    // })
+    })
   });
 
 Vorpal
   .command('appstore', 'Build and deploy to iTunes App Store')
   .action(function(args) {
-    Meteor.build(superEnv, (result) => {
+    Util.addFastfile(superEnv, (result) => {
       iTunes.uploadAppStore(superEnv, (result) => {
         return
       })
@@ -86,11 +86,9 @@ Vorpal
 Vorpal
   .command('playstore', 'Build and deploy to Google Play Store')
   .action(function(args) {
-    Meteor.build(superEnv, (result) => {
-      Android.prepareApk(superEnv, (result) => {
-        Play.uploadPlayStore(superEnv, (result) => {
-          return
-        })
+    Android.prepareApk(superEnv, (result) => {
+      Play.uploadPlayStore(superEnv, (result) => {
+        return
       })
     })
   });
@@ -98,7 +96,7 @@ Vorpal
 Vorpal
   .command('production', 'Build and deploy to iTunes and Play')
   .action(function(args) {
-    Meteor.build(superEnv, (result) => {
+    Util.addFastfile(superEnv, (result) => {
       Android.prepareApk(superEnv, (result) => {
         Play.uploadPlayStore(superEnv, (result) => {
           iTunes.uploadAppStore(superEnv, (result) => {
