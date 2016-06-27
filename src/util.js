@@ -57,7 +57,9 @@ const addFastfile = () => {
     const fastfileLocation = Path.join(__dirname, "..", "fastlane", "Fastfile");
     const fastfileTarget = Path.join(process.cwd(), ".fastlane");
 
-    Fs.mkdirSync(fastfileTarget);
+    try {
+      Fs.mkdirSync(fastfileTarget);
+    } catch (e) {}
 
     let contents = Fs.readFileSync(fastfileLocation);
 
@@ -69,8 +71,10 @@ const addFastfile = () => {
 
 const removeFastfile = () => {
   return new Promise((resolve, reject) => {
-    const fastfileTarget = Path.join(process.cwd(), ".fastlane", "Fastfile");
+    const fastfileTarget = Path.join(process.cwd(), ".fastlane");
 
+    Fs.unlinkSync(`${fastfileTarget}/Fastfile`);
+    Fs.unlinkSync(`${fastfileTarget}/README.md`);
     Fs.unlinkSync(fastfileTarget);
 
     return resolve("Fastfile deleted...");
