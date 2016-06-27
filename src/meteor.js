@@ -30,8 +30,8 @@ const build = (env) => {
       ExecSync("sleep 5");
 
       return resolve();
-    } catch (e) {
-      return reject(e.message);
+    } catch (error) {
+      return reject(error);
     }
 
   });

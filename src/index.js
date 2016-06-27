@@ -39,7 +39,7 @@ Launch
   .action((args) => {
     Util.init(superEnv)
       .then(result => console.log(result))
-      .catch(error => console.log(error));
+      .catch(error => console.log(error.message));
   });
 
 Launch
@@ -59,11 +59,11 @@ Launch
 Launch
   .command("hockey", "Build and deploy to Hockey")
   .action((args) => {
-    Util.addFastFile(superEnv)
+    Util.addFastfile(superEnv)
       .then(() => Android.prepareApk(superEnv))
       .then(() => Hockey.uploadAndroid(superEnv))
       .then(() => Hockey.uploadIOS(superEnv))
-      .catch(error => console.log(error));
+      .catch(error => console.log(error.message));
   });
 
 Launch
@@ -71,7 +71,7 @@ Launch
   .action((args) => {
     Util.addFastfile(superEnv)
       .then(() => iTunes.uploadTestFlight(superEnv))
-      .catch(error => console.log(error));
+      .catch(error => console.log(error.message));
   });
 
 Launch
@@ -79,7 +79,7 @@ Launch
   .action((args) => {
     Util.addFastfile(superEnv)
       .then(() => iTunes.uploadAppStore(superEnv))
-      .catch(error => console.log(error));
+      .catch(error => console.log(error.message));
   });
 
 Launch
@@ -87,7 +87,7 @@ Launch
   .action((args) => {
     Android.prepareApk(superEnv)
       .then(() => Play.uploadPlayStore(superEnv))
-      .catch(error => console.log(error));
+      .catch(error => console.log(error.message));
   });
 
 Launch
@@ -97,7 +97,7 @@ Launch
       .then(() => Android.prepareApk(superEnv))
       .then(() => Play.uploadPlayStore(superEnv))
       .then(() => iTunes.uploadAppStore(superEnv))
-      .catch(error => console.log(error));
+      .catch(error => console.log(error.message));
   });
 
 Launch
