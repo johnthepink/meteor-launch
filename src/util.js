@@ -1,76 +1,69 @@
 import Path from "path";
 import Fs from "fs";
-import { execSync as ExecSync } from "child_process";
+import { execSync } from "child_process";
 
-const init = () => {
-  const launchFile = Path.join(process.cwd(), "launch.json");
-
-  return new Promise((resolve, reject) => {
-
+const init = () => (
+  new Promise((resolve) => {
+    const launchFile = Path.join(process.cwd(), "launch.json");
     try {
-      ExecSync("which fastlane");
-    }
-    catch (e) {
+      execSync("which fastlane");
+    } catch (e) {
       console.log("Installing fastlane...");
-      ExecSync("sudo gem install fastlane");
+      execSync("sudo gem install fastlane");
     }
 
-    Fs.stat(launchFile, (err, stats) => {
-
+    Fs.stat(launchFile, (err) => {
       // file not found
       if (err) {
         const exampleLaunchFile = Path.join(__dirname, "../assets/launch.json");
         const targetLaunchFile = Path.join(process.cwd(), "launch.json");
 
-        let contents = Fs.readFileSync(exampleLaunchFile);
+        const contents = Fs.readFileSync(exampleLaunchFile);
 
-        Fs.writeFileSync(targetLaunchFile, contents)
+        Fs.writeFileSync(targetLaunchFile, contents);
 
         return resolve("launch.json created. Open it and fill out the vars");
       }
 
       // dont overwrite
-      else {
-        return resolve("launch.json already exists");
-      }
-
+      return resolve("launch.json already exists");
     });
-
-  });
-}
+  })
+);
 
 const launchFile = () => {
   // fail silently if trying to init
   if (process.argv[2] === "init") return false;
   try {
     Fs.statSync(`${process.cwd()}/launch.json`);
-  }
-  catch (e) {
+  } catch (e) {
     console.log("launch.json not found. Please run: launch init");
     process.exit();
   }
-  return true
-}
+  return true;
+};
 
-const addFastfile = () => {
-  return new Promise((resolve, reject) => {
+const addFastfile = () => (
+  new Promise((resolve) => {
     const fastfileLocation = Path.join(__dirname, "..", "fastlane", "Fastfile");
     const fastfileTarget = Path.join(process.cwd(), ".fastlane");
 
     try {
       Fs.mkdirSync(fastfileTarget);
-    } catch (e) {}
+    } catch (e) {
+      // do nothing
+    }
 
-    let contents = Fs.readFileSync(fastfileLocation);
+    const contents = Fs.readFileSync(fastfileLocation);
 
     Fs.writeFileSync(`${fastfileTarget}/Fastfile`, contents);
 
     return resolve("Fastfile written...");
-  });
-}
+  })
+);
 
-const removeFastfile = () => {
-  return new Promise((resolve, reject) => {
+const removeFastfile = () => (
+  new Promise((resolve) => {
     const fastfileTarget = Path.join(process.cwd(), ".fastlane");
 
     Fs.unlinkSync(`${fastfileTarget}/Fastfile`);
@@ -78,26 +71,24 @@ const removeFastfile = () => {
     Fs.unlinkSync(fastfileTarget);
 
     return resolve("Fastfile deleted...");
-  });
-}
+  })
+);
 
-const importCerts = (env) => {
-  console.log("Importing certs...");
-
-  return new Promise((resolve, reject) => {
-    ExecSync("fastlane import", {
-      stdio: [0,1,2],
-      env: env,
+const importCerts = (env) => (
+  new Promise((resolve) => {
+    console.log("Importing certs...");
+    execSync("fastlane import", {
+      stdio: [0, 1, 2],
+      env,
     });
     return resolve();
-  });
-
-}
+  })
+);
 
 const hasPlatform = (platform) => {
-  const platforms = ExecSync("meteor list-platforms");
+  const platforms = execSync("meteor list-platforms");
   return platforms.toString().indexOf(platform) > -1;
-}
+};
 
 export default {
   launchFile,
@@ -106,4 +97,4 @@ export default {
   addFastfile,
   removeFastfile,
   hasPlatform,
-}
+};

@@ -1,43 +1,43 @@
-import { execSync as ExecSync } from "child_process";
+import { execSync } from "child_process";
 import Util from "./util";
 
-const uploadTestFlight = (env) => {
-  return new Promise((resolve, reject) => {
+const uploadTestFlight = (env) => (
+  new Promise((resolve) => {
     if (!Util.hasPlatform("ios")) {
       console.log("Skipping iOS upload to TestFlight...");
       return resolve();
     }
 
-    console.log('Uploading iOS to TestFlight...');
+    console.log("Uploading iOS to TestFlight...");
 
-    ExecSync('fastlane ios beta', {
-      stdio: [0,1,2],
-      env: env,
+    execSync("fastlane ios beta", {
+      stdio: [0, 1, 2],
+      env,
     });
 
     return resolve();
-  });
-}
+  })
+);
 
-const uploadAppStore = (env) => {
-  return new Promise((resolve, reject) => {
+const uploadAppStore = (env) => (
+  new Promise((resolve) => {
     if (!Util.hasPlatform("ios")) {
       console.log("Skipping iOS upload to iTunes...");
       return resolve();
     }
 
-    console.log('Uploading to iTunes...');
+    console.log("Uploading to iTunes...");
 
-    ExecSync('fastlane ios deploy', {
-      stdio: [0,1,2],
-      env: env,
+    execSync("fastlane ios deploy", {
+      stdio: [0, 1, 2],
+      env,
     });
 
     return resolve();
-  });
-}
+  })
+);
 
 export default {
   uploadTestFlight,
   uploadAppStore,
-}
+};

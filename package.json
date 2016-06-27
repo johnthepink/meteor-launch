@@ -6,7 +6,8 @@
   "scripts": {
     "build": "./node_modules/.bin/babel src -d lib",
     "watch": "./node_modules/.bin/babel src --watch -d lib",
-    "lint": "./node_modules/.bin/eslint src"
+    "lint": "./node_modules/.bin/eslint src",
+    "test": "npm run lint"
   },
   "repository": {
     "type": "git",
