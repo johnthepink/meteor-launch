@@ -15,19 +15,24 @@ const build = (env) => {
       buildAction += ` --mobile-settings ${process.argv[2]}`;
     }
 
-    console.log("Building meteor...");
-    ExecSync(buildAction, {
-      stdio: [0,1,2],
-    });
+    try {
+      console.log("Building meteor...");
+      ExecSync(buildAction, {
+        stdio: [0,1,2],
+      });
 
-    console.log("Opening Xcode :( ...");
-    ExecSync("open $XCODE_PROJECT", {
-      stdio: [0,1,2],
-      env: env,
-    });
-    ExecSync("sleep 5");
+      // opening xcode ensures the schemes exist for the project
+      console.log("Opening Xcode :( ...");
+      ExecSync("open $XCODE_PROJECT", {
+        stdio: [0,1,2],
+        env: env,
+      });
+      ExecSync("sleep 5");
 
-    return resolve();
+      return resolve();
+    } catch (e) {
+      return reject(e.message);
+    }
 
   });
 }
