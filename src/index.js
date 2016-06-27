@@ -1,62 +1,63 @@
 #!/usr/bin/env node
-"use strict";
 
-const Vorpal = require('vorpal')(),
-      Path = require('path'),
-      _ = require('underscore');
+import Vorpal from "vorpal";
+import Path from "path";
+import { extend } from "underscore";
 
-const Meteor = require('./meteor'),
-      Hockey = require('./hockey'),
-      iTunes = require('./iTunes'),
-      Android = require('./android'),
-      Play = require('./play'),
-      Util = require('./util');
+import Meteor from "./meteor";
+import Hockey from "./hockey";
+import iTunes from "./iTunes";
+import Android from "./android";
+import Play from "./play";
+import Util from "./util";
+
+const Launch = Vorpal();
 
 let launchFile, launchVars, otherVars, superEnv;
 
 if (Util.launchFile()) {
-  launchFile = Path.join(process.cwd(), 'launch.json');
+  launchFile = Path.join(process.cwd(), "launch.json");
   launchVars = require(launchFile);
   otherVars = {
     SIGH_OUTPUT_PATH: process.cwd(),
     GYM_OUTPUT_DIRECTORY: process.cwd(),
-    FL_REPORT_PATH: Path.join(process.cwd(), '.build', 'ios')
+    FL_REPORT_PATH: Path.join(process.cwd(), ".build", "ios")
   };
-  superEnv = _.extend(launchVars, otherVars, process.env);
+  superEnv = extend(launchVars, otherVars, process.env);
 }
 
-Vorpal
-  .command('test', 'test the thing')
+Launch
+  .command("test", "test the thing")
   .action(function(args) {
-    console.log('testing');
+    console.log("testing");
   });
 
-Vorpal
-  .command('init', 'Generates launch.json file for environment vars')
+Launch
+  .command("init", "Generates launch.json file for environment vars")
   .action(function(args) {
     Util.init(superEnv, (result) => {
       console.log(result);
     })
   });
 
-Vorpal
-  .command('import', 'Import certificates')
+Launch
+  .command("import", "Import certificates")
   .action(function(args) {
     Util.importCerts(superEnv, (result) => {
       return
     })
   });
 
-Vorpal
-  .command('build', 'Builds the Meteor app in the .build folder')
+Launch
+  .command("build", "Builds the Meteor app in the .build folder")
   .action(function(args) {
     Meteor.build(superEnv, (result) => {
       return
     })
   });
 
-Vorpal
-  .command('hockey', 'Build and deploy to Hockey')
+Launch
+  .command("hockey", "Build and deploy to Hockey")
   .action(function(args) {
     Util.addFastfile(superEnv, (result) => {
       Android.prepareApk(superEnv, (result) => {
@@ -69,8 +70,8 @@ Vorpal
     })
   });
 
-Vorpal
-  .command('testflight', 'Build and deploy to TestFlight')
+Launch
+  .command("testflight", "Build and deploy to TestFlight")
   .action(function(args) {
     Util.addFastfile(superEnv, (result) => {
       iTunes.uploadTestFlight(superEnv, (result) => {
@@ -79,8 +80,8 @@ Vorpal
     })
   });
 
-Vorpal
-  .command('appstore', 'Build and deploy to iTunes App Store')
+Launch
+  .command("appstore", "Build and deploy to iTunes App Store")
   .action(function(args) {
     Util.addFastfile(superEnv, (result) => {
       iTunes.uploadAppStore(superEnv, (result) => {
@@ -89,8 +90,8 @@ Vorpal
     })
   });
 
-Vorpal
-  .command('playstore', 'Build and deploy to Google Play Store')
+Launch
+  .command("playstore", "Build and deploy to Google Play Store")
   .action(function(args) {
     Android.prepareApk(superEnv, (result) => {
       Play.uploadPlayStore(superEnv, (result) => {
@@ -99,8 +100,8 @@ Vorpal
     })
   });
 
-Vorpal
-  .command('production', 'Build and deploy to iTunes and Play')
+Launch
+  .command("production", "Build and deploy to iTunes and Play")
   .action(function(args) {
     Util.addFastfile(superEnv, (result) => {
       Android.prepareApk(superEnv, (result) => {
@@ -113,5 +114,5 @@ Vorpal
     })
   });
 
-Vorpal
+Launch
   .parse(process.argv);

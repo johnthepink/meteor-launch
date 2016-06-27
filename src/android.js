@@ -1,19 +1,17 @@
-"user strict";
-
-const ExecSync = require('child_process').execSync;
+import { execSync as ExecSync } from "child_process";
 
 function prepareApk(env, cb) {
-  console.log('Removing existing apk...');
+  console.log("Removing existing apk...");
   try {
-    ExecSync('rm $ANDROID_BUILD_FOLDER/production.apk', {
+    ExecSync("rm $ANDROID_BUILD_FOLDER/production.apk", {
       stdio: [0,1,2],
-      env: env
+      env: env,
     });
   } catch (error) {
-    console.log('No apk to remove...');
+    console.log("No apk to remove...");
   }
 
-  console.log('Signing Android apk...');
+  console.log("Signing Android apk...");
   const signCommand = `
     jarsigner -verbose \
       -sigalg SHA1withRSA \
@@ -24,10 +22,10 @@ function prepareApk(env, cb) {
   `
   ExecSync(signCommand, {
     stdio: [0,1,2],
-    env: env
+    env: env,
   });
 
-  console.log('Aligning Android apk...');
+  console.log("Aligning Android apk...");
   const alignCommand = `
     $ANDROID_ZIPALIGN 4 \
       $ANDROID_BUILD_FOLDER/release-unsigned.apk \
@@ -35,12 +33,12 @@ function prepareApk(env, cb) {
   `
   ExecSync(alignCommand, {
     stdio: [0,1,2],
-    env: env
+    env: env,
   });
 
   cb();
 }
 
-module.exports = {
-  prepareApk: prepareApk
+export default {
+  prepareApk,
 }

@@ -1,6 +1,4 @@
-"use strict";
-
-const ExecSync = require('child_process').execSync;
+import { execSync as ExecSync } from "child_process";
 
 function uploadPlayStore(env, cb) {
 
@@ -9,15 +7,15 @@ function uploadPlayStore(env, cb) {
     playup \
       --auth $PLAY_API_KEY \
       $ANDROID_BUILD_FOLDER/production.apk
-  `
+  `;
   ExecSync(playCommand, {
     stdio: [0,1,2],
-    env: env
+    env: env,
   });
 
   cb();
 }
 
-module.exports = {
-  uploadPlayStore: uploadPlayStore
+export default {
+  uploadPlayStore,
 }

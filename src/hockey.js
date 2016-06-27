@@ -1,19 +1,17 @@
-"use strict";
-
-const ExecSync = require('child_process').execSync;
+import { execSync as ExecSync } from "child_process";
 
 function uploadIOS(env, cb) {
-  console.log('Uploading to Hockey...');
+  console.log("Uploading to Hockey...");
 
-  ExecSync('fastlane ios hockey', {
+  ExecSync("fastlane ios hockey", {
     stdio: [0,1,2],
-    env: env
+    env: env,
   });
   cb();
 }
 
 function uploadAndroid(env, cb) {
-  console.log('Uploading to Hockey');
+  console.log("Uploading to Hockey");
 
   const uploadCommand = `
     curl -F "status=2" \
@@ -24,14 +22,14 @@ function uploadAndroid(env, cb) {
   `
   ExecSync(uploadCommand, {
     stdio: [0,1,2],
-    env: env
+    env: env,
   });
 
   cb();
 
 }
 
-module.exports = {
-  uploadIOS: uploadIOS,
-  uploadAndroid: uploadAndroid
+export default {
+  uploadIOS,
+  uploadAndroid,
 }
