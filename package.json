@@ -2,16 +2,17 @@
   "name": "meteor-launch",
   "version": "0.1.0",
   "description": "Automating meteor builds to the AppStore, TestFlight, Hockey, Google Play, and more later.",
-  "main": "./src/index.js",
+  "main": "./lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "./node_modules/.bin/babel src -d lib",
+    "watch": "./node_modules/.bin/babel src --watch -d lib"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NewSpring/meteor-launch.git"
   },
   "bin": {
-    "launch": "./src/index.js"
+    "launch": "./lib/index.js"
   },
   "author": "johnthepink",
   "license": "ISC",
@@ -22,5 +23,9 @@
   "dependencies": {
     "underscore": "^1.8.3",
     "vorpal": "^1.11.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-preset-es2015": "^6.9.0"
   }
 }
