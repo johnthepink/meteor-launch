@@ -59,26 +59,29 @@ Launch
 Launch
   .command("hockey", "Build and deploy to Hockey")
   .action((args) => {
-    Util.addFastfile(superEnv)
+    Util.addFastfile()
       .then(() => Android.prepareApk(superEnv))
       .then(() => Hockey.uploadAndroid(superEnv))
       .then(() => Hockey.uploadIOS(superEnv))
+      .then(() => Util.removeFastfile())
       .catch(error => console.log(error.message));
   });
 
 Launch
   .command("testflight", "Build and deploy to TestFlight")
   .action((args) => {
-    Util.addFastfile(superEnv)
+    Util.addFastfile()
       .then(() => iTunes.uploadTestFlight(superEnv))
+      .then(() => Util.removeFastfile())
       .catch(error => console.log(error.message));
   });
 
 Launch
   .command("appstore", "Build and deploy to iTunes App Store")
   .action((args) => {
-    Util.addFastfile(superEnv)
+    Util.addFastfile()
       .then(() => iTunes.uploadAppStore(superEnv))
+      .then(() => Util.removeFastfile())
       .catch(error => console.log(error.message));
   });
 
@@ -93,10 +96,11 @@ Launch
 Launch
   .command("production", "Build and deploy to iTunes and Play")
   .action((args) => {
-    Util.addFastfile(superEnv)
+    Util.addFastfile()
       .then(() => Android.prepareApk(superEnv))
       .then(() => Play.uploadPlayStore(superEnv))
       .then(() => iTunes.uploadAppStore(superEnv))
+      .then(() => Util.removeFastfile())
       .catch(error => console.log(error.message));
   });
 
