@@ -1,8 +1,14 @@
 import { execSync as ExecSync } from "child_process";
+import Util from "./util";
 
 const uploadIOS = (env, cb) => {
   return new Promise((resolve, reject) => {
-    console.log("Uploading to Hockey...");
+    if (!Util.hasPlatform("ios")) {
+      console.log("Skipping iOS upload to Hockey...");
+      return resolve();
+    }
+
+    console.log("Uploading iOS to Hockey...");
 
     ExecSync("fastlane ios hockey", {
       stdio: [0,1,2],
@@ -15,7 +21,12 @@ const uploadIOS = (env, cb) => {
 
 const uploadAndroid = (env, cb) => {
   return new Promise((resolve, reject) => {
-    console.log("Uploading to Hockey");
+    if (!Util.hasPlatform("android")) {
+      console.log("Skipping Android upload to Hockey...");
+      return resolve();
+    }
+
+    console.log("Uploading Android to Hockey...");
 
     const uploadCommand = `
       curl -F "status=2" \

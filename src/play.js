@@ -3,6 +3,11 @@ import { execSync as ExecSync } from "child_process";
 const uploadPlayStore = (env) => {
 
   return new Promise((resolve, reject) => {
+    if (!Util.hasPlatform("android")) {
+      console.log("Skipping Android upload to Play Store...");
+      return resolve();
+    }
+
     console.log('Uploading to Google Play Store...');
     const playCommand = `
       playup \

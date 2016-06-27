@@ -1,7 +1,13 @@
 import { execSync as ExecSync } from "child_process";
+import Util from "./util";
 
 const prepareApk = (env, cb) => {
   return new Promise((resolve, reject) => {
+    if (!Util.hasPlatform("android")) {
+      console.log("Skipping Android APK preparation...");
+      return resolve();
+    }
+
     console.log("Removing existing apk...");
     try {
       ExecSync("rm .build/android/production.apk", {

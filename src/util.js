@@ -88,10 +88,16 @@ const importCerts = (env) => {
 
 }
 
+const hasPlatform = (platform) => {
+  const platforms = ExecSync("meteor list-platforms");
+  return platforms.toString().indexOf(platform) > -1;
+}
+
 export default {
   launchFile,
   init,
   importCerts,
   addFastfile,
   removeFastfile,
+  hasPlatform,
 }
