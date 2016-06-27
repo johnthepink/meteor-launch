@@ -4,7 +4,7 @@ const prepareApk = (env, cb) => {
   return new Promise((resolve, reject) => {
     console.log("Removing existing apk...");
     try {
-      ExecSync("rm $ANDROID_BUILD_FOLDER/production.apk", {
+      ExecSync("rm .build/android/production.apk", {
         stdio: [0,1,2],
         env: env,
       });
@@ -18,7 +18,7 @@ const prepareApk = (env, cb) => {
         -sigalg SHA1withRSA \
         -digestalg SHA1 \
         -storepass $ANDROID_STORE_PASS \
-        $ANDROID_BUILD_FOLDER/release-unsigned.apk \
+        .build/android/release-unsigned.apk \
         $ANDROID_KEY
     `
     ExecSync(signCommand, {
@@ -29,8 +29,8 @@ const prepareApk = (env, cb) => {
     console.log("Aligning Android apk...");
     const alignCommand = `
       $ANDROID_ZIPALIGN 4 \
-        $ANDROID_BUILD_FOLDER/release-unsigned.apk \
-        $ANDROID_BUILD_FOLDER/production.apk
+        .build/android/release-unsigned.apk \
+        .build/android/production.apk
     `
     ExecSync(alignCommand, {
       stdio: [0,1,2],
