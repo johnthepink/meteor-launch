@@ -18,18 +18,23 @@ const build = (env) => (
       execSync(buildAction, {
         stdio: [0, 1, 2],
       });
+    } catch (error) {
+      return reject(error);
+    }
 
+    try {
       // opening xcode ensures the schemes exist for the project
       console.log("Opening Xcode :( ...");
       execSync("open $XCODE_PROJECT", {
-        stdio: [0, 1, 2],
+        stdio: [0],
         env,
       });
       execSync("sleep 5");
 
       return resolve();
     } catch (error) {
-      return reject(error);
+      // fail silently if no xcode project
+      return resolve();
     }
   })
 );
