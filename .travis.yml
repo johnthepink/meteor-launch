@@ -6,7 +6,12 @@ node_js:
 cache:
   directories:
   - node_modules
+  - "$HOME/.rvm"
+before_install:
+  - rvm install 2.2.5
+  - rvm use 2.2.5
 install:
+  - gem install fastlane
   - npm install
 script:
   - npm test
