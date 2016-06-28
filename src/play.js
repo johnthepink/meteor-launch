@@ -8,10 +8,17 @@ const uploadPlayStore = (env) => (
       return resolve();
     }
 
+    try {
+      execSync("which playup");
+    } catch (e) {
+      console.log("Installing playup...");
+      execSync("npm install -g playup");
+    }
+
     console.log("Uploading to Google Play Store...");
     const playCommand = `
       playup \
-        --auth $PLAY_API_KEY \
+        --auth $PLAY_AUTH_FILE \
         $ANDROID_BUILD_FOLDER/production.apk
     `;
     execSync(playCommand, {
