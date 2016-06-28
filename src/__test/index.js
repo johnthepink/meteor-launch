@@ -1,1 +1,2 @@
 import "./help";
+import "./init";
