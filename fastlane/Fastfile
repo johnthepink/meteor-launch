@@ -91,7 +91,8 @@ platform :ios do
     build_app_production
 
     pilot(
-      username: ENV['APPLE_ID']
+      username: ENV['APPLE_ID'],
+      skip_waiting_for_build_processing: true
     )
   end
 
