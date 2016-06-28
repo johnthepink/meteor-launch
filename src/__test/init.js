@@ -12,7 +12,9 @@ beforeEach(() => {
 
 describe("init", () => {
   it("should error when no launch.json file", () => {
-    const output = execSync("launch build");
+    const output = execSync("launch build", {
+      env: process.env,
+    });
 
     assert.equal(
       output.toString(),
@@ -21,7 +23,9 @@ describe("init", () => {
   });
 
   it("should return launch message", () => {
-    const output = execSync("launch init");
+    const output = execSync("launch init", {
+      env: process.env,
+    });
 
     assert.equal(
       output.toString(),
@@ -30,7 +34,9 @@ describe("init", () => {
   });
 
   it("should add launch file", () => {
-    execSync("launch init");
+    execSync("launch init", {
+      env: process.env,
+    });
     const launchFile = join(process.cwd(), "launch.json");
 
     stat(launchFile, (err) => {
