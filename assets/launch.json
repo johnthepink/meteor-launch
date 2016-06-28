@@ -4,6 +4,7 @@
   "APP_IDENTIFIER": "com.example.app",
   "APPLE_ID": "you@apple.com",
   "FASTLANE_PASSWORD": "",
+  "KEYCHAIN_PASSWORD": "",
   "SLACK_URL": "",
   "SLACK_ROOM": "",
   "ANDROID_STORE_PASS": "",
