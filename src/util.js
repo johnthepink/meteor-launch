@@ -33,7 +33,12 @@ const init = () => (
 
 const launchFile = () => {
   // fail silently if trying to init
-  if (process.argv[2] === "init") return false;
+  if (
+    process.argv[2] === "init" ||
+    process.argv[2] === "help" ||
+    typeof process.argv[2] === "undefined"
+  ) return false;
+
   try {
     Fs.statSync(`${process.cwd()}/launch.json`);
   } catch (e) {
