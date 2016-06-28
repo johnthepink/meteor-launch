@@ -5,6 +5,8 @@
   "APPLE_ID": "you@apple.com",
   "FASTLANE_PASSWORD": "",
   "KEYCHAIN_PASSWORD": "",
+  "CERT_KEY_PATH": "",
+  "CERT_PASSWORD": "",
   "SLACK_URL": "",
   "SLACK_ROOM": "",
   "ANDROID_STORE_PASS": "",
