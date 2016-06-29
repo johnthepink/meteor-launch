@@ -19,6 +19,10 @@
     "launch": "./lib/index.js"
   },
   "author": "johnthepink",
+  "collaborators": [
+    "jbaxleyiii",
+    "newspring"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/NewSpring/meteor-launch/issues"
