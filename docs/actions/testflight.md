@@ -8,4 +8,6 @@ The `testflight` action will compile your Cordova build for iOS to be distribute
 
 ## Setup
 
+You will need to have set up an application through [iTunes Connect](https://itunesconnect.apple.com).
+
 There is no additional setup required if you have already provided the information described in the [build](actions/build.md) action. Just let it fly!
