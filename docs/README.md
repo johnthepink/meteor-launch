@@ -53,6 +53,23 @@ secrets.tar
 *.p12
 ```
 
+### mobile-config.js
+
+A `mobile-config.js` is needed in order to target Cordova in a Meteor project. It would be a good idea to set this up if you haven't already. [Here](https://github.com/NewSpring/launch-todos-example/blob/master/mobile-config.js) is an example from a sample project. More info is availabe in the [Meteor docs](https://docs.meteor.com/api/mobile-config.html).
+
+```javascript
+App.info({
+  id: 'cc.newspring.LaunchTodosExample',
+  name: 'LaunchTodosExample',
+  description: 'Example of using launch',
+  author: 'NewSpring Church',
+  email: 'web@newspring.cc',
+  website: 'https://newspring.cc',
+  version: '0.0.1',
+  buildNumber: '1'
+});
+```
+
 ### next
 
 It's time to launch some things! For each `launch` action, there are specific variables that you will need to fill out in your `launch.json` file. For information on each action, use the sidebar. Happy launching!
