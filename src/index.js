@@ -64,7 +64,7 @@ Launch
   });
 
 Launch
-  .command("hockey", "Build and deploy to Hockey")
+  .command("hockey", "Deploy to Hockey")
   .action(() => {
     util.addFastfile()
       .then(() => android.prepareApk(superEnv))
@@ -75,7 +75,7 @@ Launch
   });
 
 Launch
-  .command("testflight", "Build and deploy to TestFlight")
+  .command("testflight", "Deploy to TestFlight")
   .action(() => {
     util.addFastfile()
       .then(() => iTunes.uploadTestFlight(superEnv))
@@ -84,7 +84,7 @@ Launch
   });
 
 Launch
-  .command("appstore", "Build and deploy to iTunes App Store")
+  .command("appstore", "Deploy to iTunes App Store")
   .action(() => {
     util.addFastfile()
       .then(() => iTunes.uploadAppStore(superEnv))
@@ -93,7 +93,7 @@ Launch
   });
 
 Launch
-  .command("playstore", "Build and deploy to Google Play Store")
+  .command("playstore", "Deploy to Google Play Store")
   .action(() => {
     android.prepareApk(superEnv)
       .then(() => play.uploadPlayStore(superEnv))
@@ -101,7 +101,7 @@ Launch
   });
 
 Launch
-  .command("production", "Build and deploy to iTunes and Play")
+  .command("production", "Deploy to iTunes and Play")
   .action(() => {
     util.addFastfile()
       .then(() => android.prepareApk(superEnv))
