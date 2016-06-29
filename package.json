@@ -7,8 +7,9 @@
     "build": "./node_modules/.bin/babel src -d lib",
     "watch": "./node_modules/.bin/babel src --watch -d lib",
     "lint": "./node_modules/.bin/eslint src",
-    "pretest": "npm link",
-    "test": "./node_modules/.bin/mocha --reporter spec --full-trace lib/__test/index.js && npm run lint"
+    "pretest": "npm run build && npm link",
+    "test": "./node_modules/.bin/mocha --reporter spec --full-trace lib/__test/index.js",
+    "posttest": "npm run lint"
   },
   "repository": {
     "type": "git",

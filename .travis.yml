@@ -14,6 +14,5 @@ install:
   - gem install fastlane
   - npm install
 script:
-  - npm run build
   - npm test
 sudo: false
