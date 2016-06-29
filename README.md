@@ -81,3 +81,11 @@ This will deploy straight to the iTunes App Store, bypassing TestFlight. It's pr
 ```
 launch appstore
 ```
+
+### galaxy
+
+This will deploy your app to Galaxy:
+
+```
+launch galaxy server.com path/to/optional/settings.json
+```
