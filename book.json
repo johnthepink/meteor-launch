@@ -1,0 +1,13 @@
+{
+  "root": "./docs",
+  "plugins": ["edit-link", "github", "prism", "-highlight"],
+  "pluginsConfig": {
+    "edit-link": {
+        "base": "https://github.com/newspring/meteor-launch/edit/master/docs",
+        "label": "Edit On GitHub"
+    },
+    "github": {
+      "url": "https://github.com/newspring/meteor-launch"
+    }
+  }
+}
