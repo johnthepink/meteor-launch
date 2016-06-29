@@ -11,8 +11,7 @@ const deploy = (env) => (
     let deployCommand = `
       DEPLOY_HOSTNAME=$GALAXY_DEPLOY_HOSTNAME \
       METEOR_SESSION_FILE=$GALAXY_SESSION_FILE \
-      meteor deploy ${meteorServer}
-    `;
+      meteor deploy ${meteorServer}`;
     if (process.argv[2]) {
       deployCommand += ` --settings ${process.argv[2]}`;
     }
