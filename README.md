@@ -22,15 +22,11 @@ keytool -genkey -alias your-app-name -keyalg RSA \
     -keysize 2048 -validity 10000
 ~~~
 
-Install [playup](https://github.com/jeduan/playup) for deploying to Google Play Store.
-
-~~~
-npm install -g playup
-~~~
+_I want to add a task for this soon._
 
 ### mobile-config.js
 
-Make sure you have a proper Meteor `mobile-config.js` file.
+Make sure you have a Meteor `mobile-config.js` file. More info [here](https://docs.meteor.com/api/mobile-config.html).
 
 ### init
 
@@ -48,48 +44,40 @@ launch init
 
 ### build
 
-This will just build your app:
+This will build your app:
 
 ```
-launch build server.com
+launch build server.com path/to/settings.json
 ```
 
 ### hockey
 
-This will build and deploy to Hockey:
+This will deploy to Hockey based on the platforms you have added to Meteor. So if you have added `ios` and `android` through `meteor add-platform`, it will try to deploy to Hockey for each platform. If you have only added one, it will just deploy that one.
 
 ```
-launch hockey server.com
+launch hockey
 ```
 
 ### testflight
 
-This will build and deploy to TestFlight:
+This will deploy to TestFlight, if you have added the `ios` platform to Meteor.
 
 ```
-launch testflight server.com
-```
-
-### appstore
-
-This will build and deploy to iTunes:
-
-```
-launch appstore server.com
+launch testflight
 ```
 
 ### playstore
 
-This will build and deploy to Google Play:
+This will deploy to Google Play, if you have added the `android` platform to Meteor. It currently deploys to the alpha channel. Other channels will be added in the future.
 
 ```
-launch playstore server.com
+launch playstore
 ```
 
-### production
+### appstore
 
-This will build and deploy to iTunes and Google Play:
+This will deploy straight to the iTunes App Store, bypassing TestFlight. It's probably smarter to do `launch testflight`, and then promote a build to the app store from iTunes Connect.
 
 ```
-launch production server.com
+launch appstore
 ```
