@@ -1,9 +1,9 @@
 import { execSync } from "child_process";
-import Util from "./util";
+import util from "./util";
 
 const uploadIOS = (env) => (
   new Promise((resolve) => {
-    if (!Util.hasPlatform("ios")) {
+    if (!util.hasPlatform("ios")) {
       console.log("Skipping iOS upload to Hockey...");
       return resolve();
     }
@@ -21,7 +21,7 @@ const uploadIOS = (env) => (
 
 const uploadAndroid = (env) => (
   new Promise((resolve) => {
-    if (!Util.hasPlatform("android")) {
+    if (!util.hasPlatform("android")) {
       console.log("Skipping Android upload to Hockey...");
       return resolve();
     }

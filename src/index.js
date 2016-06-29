@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 
 import vorpal from "vorpal";
-import path from "path";
+import {
+  join,
+  resolve,
+} from "path";
 import { extend } from "underscore";
 
 import meteor from "./meteor";
@@ -19,15 +22,15 @@ let otherVars;
 let superEnv;
 
 if (util.launchFile()) {
-  launchFile = path.join(process.cwd(), "launch.json");
+  launchFile = join(process.cwd(), "launch.json");
   // eslint-disable-next-line global-require
   launchVars = require(launchFile);
   otherVars = {
     SIGH_OUTPUT_PATH: process.cwd(),
     GYM_OUTPUT_DIRECTORY: process.cwd(),
-    FL_REPORT_PATH: path.join(process.cwd(), ".build", "ios"),
+    FL_REPORT_PATH: join(process.cwd(), ".build", "ios"),
     // convert relative paths to abslute
-    XCODE_PROJECT: path.resolve(launchVars.XCODE_PROJECT),
+    XCODE_PROJECT: resolve(launchVars.XCODE_PROJECT),
   };
   superEnv = extend(launchVars, otherVars, process.env);
 }

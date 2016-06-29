@@ -1,10 +1,17 @@
-import Path from "path";
-import Fs from "fs";
+import { join } from "path";
+import {
+  stat,
+  readFileSync,
+  writeFileSync,
+  statSync,
+  unlinkSync,
+  mkdirSync,
+} from "fs";
 import { execSync } from "child_process";
 
 const init = () => (
   new Promise((resolve) => {
-    const launchFile = Path.join(process.cwd(), "launch.json");
+    const launchFile = join(process.cwd(), "launch.json");
     try {
       execSync("which fastlane");
     } catch (e) {
@@ -12,15 +19,15 @@ const init = () => (
       execSync("sudo gem install fastlane");
     }
 
-    Fs.stat(launchFile, (err) => {
+    stat(launchFile, (err) => {
       // file not found
       if (err) {
-        const exampleLaunchFile = Path.join(__dirname, "../assets/launch.json");
-        const targetLaunchFile = Path.join(process.cwd(), "launch.json");
+        const exampleLaunchFile = join(__dirname, "../assets/launch.json");
+        const targetLaunchFile = join(process.cwd(), "launch.json");
 
-        const contents = Fs.readFileSync(exampleLaunchFile);
+        const contents = readFileSync(exampleLaunchFile);
 
-        Fs.writeFileSync(targetLaunchFile, contents);
+        writeFileSync(targetLaunchFile, contents);
 
         return resolve("launch.json created. Open it and fill out the vars");
       }
@@ -40,7 +47,7 @@ const launchFile = () => {
   ) return false;
 
   try {
-    Fs.statSync(`${process.cwd()}/launch.json`);
+    statSync(`${process.cwd()}/launch.json`);
   } catch (e) {
     console.log("launch.json not found. Please run: launch init");
     process.exit();
@@ -50,18 +57,18 @@ const launchFile = () => {
 
 const addFastfile = () => (
   new Promise((resolve) => {
-    const fastfileLocation = Path.join(__dirname, "..", "fastlane", "Fastfile");
-    const fastfileTarget = Path.join(process.cwd(), ".fastlane");
+    const fastfileLocation = join(__dirname, "..", "fastlane", "Fastfile");
+    const fastfileTarget = join(process.cwd(), ".fastlane");
 
     try {
-      Fs.mkdirSync(fastfileTarget);
+      mkdirSync(fastfileTarget);
     } catch (e) {
       // do nothing
     }
 
-    const contents = Fs.readFileSync(fastfileLocation);
+    const contents = readFileSync(fastfileLocation);
 
-    Fs.writeFileSync(`${fastfileTarget}/Fastfile`, contents);
+    writeFileSync(`${fastfileTarget}/Fastfile`, contents);
 
     return resolve("Fastfile written...");
   })
@@ -69,11 +76,11 @@ const addFastfile = () => (
 
 const removeFastfile = () => (
   new Promise((resolve) => {
-    const fastfileTarget = Path.join(process.cwd(), ".fastlane");
+    const fastfileTarget = join(process.cwd(), ".fastlane");
 
-    Fs.unlinkSync(`${fastfileTarget}/Fastfile`);
-    Fs.unlinkSync(`${fastfileTarget}/README.md`);
-    Fs.unlinkSync(fastfileTarget);
+    unlinkSync(`${fastfileTarget}/Fastfile`);
+    unlinkSync(`${fastfileTarget}/README.md`);
+    unlinkSync(fastfileTarget);
 
     return resolve("Fastfile deleted...");
   })

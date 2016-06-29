@@ -1,9 +1,9 @@
 import { execSync } from "child_process";
-import Util from "./util";
+import util from "./util";
 
 const uploadTestFlight = (env) => (
   new Promise((resolve) => {
-    if (!Util.hasPlatform("ios")) {
+    if (!util.hasPlatform("ios")) {
       console.log("Skipping iOS upload to TestFlight...");
       return resolve();
     }
@@ -21,7 +21,7 @@ const uploadTestFlight = (env) => (
 
 const uploadAppStore = (env) => (
   new Promise((resolve) => {
-    if (!Util.hasPlatform("ios")) {
+    if (!util.hasPlatform("ios")) {
       console.log("Skipping iOS upload to iTunes...");
       return resolve();
     }

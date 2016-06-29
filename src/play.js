@@ -1,9 +1,9 @@
 import { execSync } from "child_process";
-import Util from "./util";
+import util from "./util";
 
 const uploadPlayStore = (env) => (
   new Promise((resolve) => {
-    if (!Util.hasPlatform("android")) {
+    if (!util.hasPlatform("android")) {
       console.log("Skipping Android upload to Play Store...");
       return resolve();
     }
