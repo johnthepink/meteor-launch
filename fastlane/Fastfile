@@ -71,11 +71,6 @@ platform :ios do
     )
   end
 
-  desc "Runs all the tests"
-  lane :test do
-    snapshot
-  end
-
   desc "Just build the app"
   lane :build do
     build_app_production
@@ -84,8 +79,6 @@ platform :ios do
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :beta do
-    # snapshot
-
     import_certificates
 
     build_app_production
@@ -99,8 +92,6 @@ platform :ios do
   desc "Submit a new Beta Build to Hockey"
   desc "This will also make sure the profile is up to date"
   lane :hockey do
-    # snapshot
-
     import_certificates
 
     build_app_ad_hoc
@@ -115,15 +106,12 @@ platform :ios do
   desc "Deploy a new version to the App Store"
   desc "** Full Markdown** Support: `code`"
   lane :deploy do
-    # snapshot
-
     build_app_production
 
     deliver(
       username: ENV['APPLE_ID'],
       force: true
     )
-    # frameit
   end
 
   after_all do |lane|
