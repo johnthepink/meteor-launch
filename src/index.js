@@ -8,6 +8,7 @@ import {
 import { extend } from "underscore";
 
 import meteor from "./meteor";
+import galaxy from "./galaxy";
 import hockey from "./hockey";
 import iTunes from "./iTunes";
 import android from "./android";
@@ -108,6 +109,13 @@ Launch
       .then(() => play.uploadPlayStore(superEnv))
       .then(() => iTunes.uploadAppStore(superEnv))
       .then(() => util.removeFastfile())
+      .catch(error => console.log(error.message));
+  });
+
+Launch
+  .command("galaxy", "Deploy to Galaxy")
+  .action(() => {
+    galaxy.deploy(superEnv)
       .catch(error => console.log(error.message));
   });
 
