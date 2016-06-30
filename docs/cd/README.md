@@ -2,7 +2,7 @@
 
 You can use `launch` on your local machine. But, its real power comes when you get it running on a CD server, such as [Travis](https://travis-ci.org/) or [CircleCI](https://circleci.com/). Then, you can have `launch` distribute your app automatically after merging a PR, or creating a GitHub release.
 
-Since we don't want to commit our `launch.json` and other sensitive files to our git repo, you will need a different solution for getting those files on to you CD server.
+Since we don't want to commit our `launch.json` and other sensitive files to our git repo, you will need a different solution for getting those files on to your CD server.
 
 ## Travis
 
