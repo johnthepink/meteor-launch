@@ -1,6 +1,6 @@
 # Launch
 
-`launch` is a command line tool that automates the build and deployment of Meteor Corova projects to [Galaxy](https://galaxy.meteor.com/), the [iOS App Store](http://www.apple.com/itunes/charts/free-apps/), [Google Play](https://play.google.com/store), and [Hockey](https://www.hockeyapp.net/features/). You won't even have to open Xcode! Set up `launch`, throw it on a [CI](https://travis-ci.org/NewSpring/launch-basic-example), and never worry about deployment again.
+`launch` is a command line tool that automates the build and deployment of Meteor Corova projects to [Galaxy](https://galaxy.meteor.com/), the [iOS App Store](http://www.apple.com/itunes/charts/free-apps/), [Google Play](https://play.google.com/store), and [Hockey](https://www.hockeyapp.net/features/). You won't even have to open Xcode! Set up `launch` in an existing or new project, throw it on a [CI](https://travis-ci.org/NewSpring/launch-basic-example), and never worry about deployment again.
 
 ![see ya](http://i.giphy.com/8E1uPDT9gfhJK.gif)
 
