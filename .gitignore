@@ -2,3 +2,4 @@ node_modules
 launch.json
 npm-debug.log
 lib
+_book
