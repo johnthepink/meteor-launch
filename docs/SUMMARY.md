@@ -1,6 +1,7 @@
 # Summary
 
-* [Introduction](README.md)
+* [Introduction](/README.md)
+  * [Getting Started](/README.md#getting-started)
 * [Actions](/actions/README.md)
   * [build](/actions/build/README.md)
   * [galaxy](/actions/galaxy/README.md)
