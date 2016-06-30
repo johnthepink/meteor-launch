@@ -8,7 +8,7 @@ The `hockey` action will deploy your Cordova app to [Hockey](https://www.hockeya
 
 ## Setup
 
-First, make sure you have added the keys describe in the [build](actions/build.md) action.
+First, make sure you have added the keys describe in the [build](/actions/build/README.md) action.
 
 Then, make sure you have created an application on Hockey corresponding to the type(s) of application(s) you want to upload. If you will be uploading both iOS and Android apps, you will need two separate apps on Hockey.
 
