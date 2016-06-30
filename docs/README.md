@@ -16,7 +16,7 @@ $ launch testflight
 
 ### install
 
-First, let's get launch installed globally.
+Let's get launch installed globally.
 
 ```shell
 $ npm install -g meteor-launch
@@ -24,7 +24,7 @@ $ npm install -g meteor-launch
 
 ### init
 
-Next, we need to create a `launch.json` file in your project. This is what `launch` uses in your project to set all your project-specific variables (API tokens, directories, etc.). `launch` has a command for that.
+We need to create a `launch.json` file in your project. This is what `launch` uses in your project to set all your project-specific variables (API tokens, directories, etc.). `launch` has a command for that.
 
 ```shell
 $ launch init

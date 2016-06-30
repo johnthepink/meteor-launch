@@ -37,7 +37,7 @@ deployment_token.json
 secrets.tar
 ```
 
-Then, add a `mobile-config.js` file in your project root with this info.
+Add a `mobile-config.js` file in your project root with this info.
 
 ```javascript
 App.info({
@@ -80,7 +80,7 @@ This creates a key named `launch-basic-example`. You will be prompted to enter a
 
 #### Hockey
 
-Next, let's take care of Hockey. If you don't already have a Hockey account, [create one](https://hockeyapp.net) and then click "New App" from the dashboard page.
+If you don't already have a Hockey account, [create one](https://hockeyapp.net) and then click "New App" from the dashboard page.
 
 ![](http://i.imgur.com/OX8zlfX.png)
 
@@ -152,7 +152,7 @@ script:
 
 This is going to install Meteor, launch, the Android SDK, and a bunch of other stuff.
 
-Now, we need to encrypt the files we need available on the Travis server. We can do this with the Travis CLI tool.
+We need to encrypt the files we need available on the Travis server. We can do this with the Travis CLI tool.
 
 ```shell
 $ gem install travis
@@ -164,7 +164,7 @@ Let's copy the `.keystore` file you generated in your home directory when you cr
 $ cp ~/.keystore ./.keystore
 ```
 
-Now, we can encrypt `launch.json`, `.keystore`, and `deployment_token.json` so that we can commit them to our repo.
+We can encrypt `launch.json`, `.keystore`, and `deployment_token.json` so that we can commit them to our repo.
 
 ```shell
 $ tar cvf secrets.tar launch.json .keystore deployment_token.json
