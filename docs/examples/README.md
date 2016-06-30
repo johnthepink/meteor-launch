@@ -175,6 +175,8 @@ This will also add some keys to Travis's environment variables for decryption, a
 
 Finally, push your repo to GitHub, turn builds on for this project on Travis, and you have automated everything!
 
+---
+
 ## Kitchen Sink
 
 In this example, we are going to use Travis's build matrix to:
