@@ -55,7 +55,7 @@ secrets.tar
 
 ### mobile-config.js
 
-A `mobile-config.js` is needed in order to target Cordova in a Meteor project. It would be a good idea to set this up if you haven't already. [Here](https://github.com/NewSpring/launch-todos-example/blob/master/mobile-config.js) is an example from a sample project. More info is availabe in the [Meteor docs](https://docs.meteor.com/api/mobile-config.html).
+A `mobile-config.js` is needed in order to target Cordova in a Meteor project. It would be a good idea to set this up if you haven't already. [Here](https://github.com/NewSpring/launch-todos-example/blob/master/mobile-config.js) is an example from a sample project. More info is available in the [Meteor docs](https://docs.meteor.com/api/mobile-config.html).
 
 ```javascript
 App.info({
