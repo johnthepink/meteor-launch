@@ -57,7 +57,6 @@ Let's start filling out our variables in the `launch.json` file. Below is what w
 ```json
 {
   "APP_IDENTIFIER": "cc.newspring.LaunchBasicExample",
-  "ANDROID_BUILD_FOLDER": ".build/android",
   "ANDROID_KEY": "launch-basic-example",
   "ANDROID_STORE_PASS": "password",
   "ANDROID_HOCKEY_TOKEN": "215d3df4b2ba4090918115207c13d718",
@@ -67,7 +66,7 @@ Let's start filling out our variables in the `launch.json` file. Below is what w
 }
 ```
 
-`APP_IDENTIFIER` will be whatever you like, and `ANDROID_BUILD_FOLDER` needs to be exactly that. Let's generate the `ANDROID_KEY` and `ANDROID_STORE_PASS`.
+`APP_IDENTIFIER` can be what you like, but is generally defined in the backwards domain style (com.example.app). Let's generate the `ANDROID_KEY` and `ANDROID_STORE_PASS`.
 
 #### Android
 
