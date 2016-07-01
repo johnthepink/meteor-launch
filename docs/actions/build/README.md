@@ -17,7 +17,6 @@ If you are targeting the iOS platform, fill out these variables in your `launch.
 ```json
 {
   "XCODE_SCHEME_NAME": "NameOfYourApp",
-  "XCODE_PROJECT": ".build/ios/project/NameOfYourApp.xcodeproj",
   "APP_IDENTIFIER": "com.example.app",
   "APPLE_ID": "appleid@email.com",
   "FASTLANE_PASSWORD": "appleIdPassword",
@@ -28,7 +27,6 @@ If you are targeting the iOS platform, fill out these variables in your `launch.
 ```
 
 - `XCODE_SCHEME_NAME`: name of your app from `mobile-config.js`.
-- `XCODE_PROJECT`: path to the Xcode project generated (just replace above with your app name).
 - `APP_IDENTIFIER`: this is your unique app identifier set as `id` in `mobile-config.js`.
 - `APPLE_ID`: the email associated with your Apple Developer account.
 - `FASTLANE_PASSWORD`: the password associated with your Apple Developer account (I know this doesn't make sense right now).
