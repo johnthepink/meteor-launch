@@ -1,6 +1,5 @@
 {
   "XCODE_SCHEME_NAME": "",
-  "XCODE_PROJECT": "",
   "APP_IDENTIFIER": "",
   "APPLE_ID": "",
   "FASTLANE_PASSWORD": "",
@@ -9,7 +8,6 @@
   "CERT_PASSWORD": "",
   "SLACK_URL": "",
   "SLACK_ROOM": "",
-  "ANDROID_BUILD_FOLDER": "",
   "ANDROID_KEY": "",
   "ANDROID_STORE_PASS": "",
   "ANDROID_ZIPALIGN": "",
