@@ -42,14 +42,12 @@ If you are targeting the Android platform, fill out these variables in your `lau
 
 ```json
 {
-  "ANDROID_BUILD_FOLDER": ".build/android",
   "ANDROID_STORE_PASS": "password",
   "ANDROID_KEY": "name-of-key",
   "ANDROID_ZIPALIGN": "/path/to/android/sdk/build-tools/23.0.3/zipalign"
 }
 ```
 
-- `ANDROID_BUILD_FOLDER`: should be exactly that `.build/android`
 - `ANDROID_STORE_KEY`: the name of the key generated for signing your android app. To generate a key, run this command, replacing `your-app-name` with your app name:
 
 ```shell

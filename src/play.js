@@ -19,7 +19,7 @@ const uploadPlayStore = (env) => (
     const playCommand = `
       playup \
         --auth $PLAY_AUTH_FILE \
-        $ANDROID_BUILD_FOLDER/production.apk
+        .build/android/production.apk
     `;
     execSync(playCommand, {
       stdio: [0, 1, 2],

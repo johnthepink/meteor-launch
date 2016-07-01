@@ -31,7 +31,7 @@ const uploadAndroid = (env) => (
     const uploadCommand = `
       curl -F "status=2" \
         -F "notify=0" \
-        -F "ipa=@$ANDROID_BUILD_FOLDER/production.apk" \
+        -F "ipa=@.build/android/production.apk" \
         -H "X-HockeyAppToken: $ANDROID_HOCKEY_TOKEN" \
         https://rink.hockeyapp.net/api/2/apps/${env.ANDROID_HOCKEY_ID}/app_versions/upload
     `;
