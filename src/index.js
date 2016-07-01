@@ -30,8 +30,7 @@ if (util.launchFile()) {
     SIGH_OUTPUT_PATH: process.cwd(),
     GYM_OUTPUT_DIRECTORY: process.cwd(),
     FL_REPORT_PATH: join(process.cwd(), ".build", "ios"),
-    // convert relative paths to abslute
-    XCODE_PROJECT: resolve(launchVars.XCODE_PROJECT),
+    XCODE_PROJECT: resolve(".build", "ios", "project", `${launchVars.XCODE_SCHEME_NAME}.xcodeproj`),
   };
   superEnv = extend(launchVars, otherVars, process.env);
 }
