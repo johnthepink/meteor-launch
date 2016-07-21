@@ -12,7 +12,7 @@ Here are all the finished items:
 
 1. [Code on GitHub](https://github.com/NewSpring/launch-basic-example)
 2. [Build on Travis](https://travis-ci.org/NewSpring/launch-basic-example)
-3. [Site on Galaxy](https://launch-basic-example.meteorapp.com/)
+3. [Site on Heroku](https://launch-basic-example.herokuapp.com/)
 4. [App download on Hockey](https://rink.hockeyapp.net/apps/9c21ad20059c4486baf98fb9ef472a9c)
 
 #### Getting Started
@@ -192,7 +192,7 @@ Here is what can be made available publicly of the finished example:
 
 1. [Code on GitHub](https://github.com/NewSpring/launch-todos-example)
 2. [Build on Travis](https://travis-ci.org/NewSpring/launch-todos-example)
-3. [Site on Galaxy](https://launch-todos-example.meteorapp.com/)
+3. [Site on Heroku](https://launch-todos-example.herokuapp.com/)
 4. [iOS app download on Hockey](https://rink.hockeyapp.net/apps/dc6361da5fdd4c42ba3aed76ef894f22)
 5. [Android app download on Hockey](https://rink.hockeyapp.net/apps/a6221f3834f149599f8da90bd23fd147)
 
