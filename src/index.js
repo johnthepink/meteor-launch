@@ -64,6 +64,13 @@ Launch
   });
 
 Launch
+  .command("prepare", "Prepares the Android apk files")
+  .action(() => {
+    android.prepareApk(superEnv)
+      .catch(error => console.log(error));
+  });
+
+Launch
   .command("hockey", "Deploy to Hockey")
   .action(() => {
     util.addFastfile()
