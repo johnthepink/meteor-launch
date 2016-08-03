@@ -115,4 +115,6 @@ const prepareApk = (env) => (
 
 export default {
   prepareApk,
+  findCrosswalkApks,
+  signedApks,
 };
