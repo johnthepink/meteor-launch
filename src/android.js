@@ -22,9 +22,9 @@ const signedApks = {
 
 const removeApks = () => {
   console.log("Removing existing apk...");
-  Object.keys(signedApks).map((apk) => {
-    rimraf.sync(signedApks[apk]);
-  });
+  Object.keys(signedApks).map((apk) => (
+    rimraf.sync(signedApks[apk])
+  ));
 };
 
 const findCrosswalkApks = () => {
@@ -38,48 +38,46 @@ const findCrosswalkApks = () => {
 };
 
 const getSignCommands = (isCrosswalk) => {
-  const signCommand = (apkPath) => {
-    return `
+  const signCommand = (apkPath) => (
+    `
       jarsigner -verbose \
         -sigalg SHA1withRSA \
         -digestalg SHA1 \
         -storepass $ANDROID_STORE_PASS \
         ${apkPath} \
         $ANDROID_KEY
-    `;
-  }
+    `
+  );
 
   if (isCrosswalk) {
     return [
       signCommand(unsignedApks.crosswalkArmv7),
       signCommand(unsignedApks.crosswalkX86),
     ];
-  } else {
-    return [
-      signCommand(unsignedApks.regular),
-    ];
   }
+  return [
+    signCommand(unsignedApks.regular),
+  ];
 };
 
 const getAlignCommands = (isCrosswalk) => {
-  const alignCommand = (apkPath, output) => {
-    return `
+  const alignCommand = (apkPath, output) => (
+    `
       $ANDROID_ZIPALIGN 4 \
         ${apkPath} \
         ${output}
-    `;
-  };
+    `
+  );
 
   if (isCrosswalk) {
     return [
       alignCommand(unsignedApks.crosswalkArmv7, signedApks.crosswalkArmv7),
       alignCommand(unsignedApks.crosswalkX86, signedApks.crosswalkX86),
     ];
-  } else {
-    return [
-      alignCommand(unsignedApks.regular, signedApks.regular),
-    ];
   }
+  return [
+    alignCommand(unsignedApks.regular, signedApks.regular),
+  ];
 };
 
 const prepareApk = (env) => (
@@ -94,20 +92,20 @@ const prepareApk = (env) => (
     const isCrosswalk = findCrosswalkApks();
 
     console.log("Signing Android apk...");
-    getSignCommands(isCrosswalk).map((command) => {
+    getSignCommands(isCrosswalk).map((command) => (
       execSync(command, {
         stdio: [0, 1, 2],
         env,
-      });
-    });
+      })
+    ));
 
     console.log("Aligning Android apk...");
-    getAlignCommands(isCrosswalk).map((command) => {
+    getAlignCommands(isCrosswalk).map((command) => (
       execSync(command, {
         stdio: [0, 1, 2],
         env,
-      });
-    });
+      })
+    ));
 
     return resolve();
   })

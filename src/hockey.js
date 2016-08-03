@@ -27,34 +27,34 @@ const uploadAndroid = (env) => (
       return resolve();
     }
 
-    const getCommand = (path) => {
-      return `
+    const getCommand = (path) => (
+      `
         curl -F "status=2" \
           -F "notify=0" \
           -F "ipa=@${path}" \
           -H "X-HockeyAppToken: $ANDROID_HOCKEY_TOKEN" \
           https://rink.hockeyapp.net/api/2/apps/${env.ANDROID_HOCKEY_ID}/app_versions/upload
       `
-    };
+    );
 
     console.log("Uploading Android to Hockey...");
 
     const isCrosswalk = android.findCrosswalkApks();
 
     const commands = isCrosswalk ?
-      [
-        getCommand(android.signedApks.crosswalkArmv7),
-        getCommand(android.signedApks.crosswalkX86),
-      ] :
+    [
+      getCommand(android.signedApks.crosswalkArmv7),
+      getCommand(android.signedApks.crosswalkX86),
+    ] :
       [getCommand(android.signedApks.regular)]
     ;
 
-    commands.map((command) => {
+    commands.map((command) => (
       execSync(command, {
         stdio: [0, 1, 2],
         env,
-      });
-    });
+      })
+    ));
 
     return resolve();
   })
