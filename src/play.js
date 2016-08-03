@@ -36,12 +36,12 @@ const uploadPlayStore = (env) => (
       [getCommand(android.signedApks.regular)]
     ;
 
-    commands.map((command) => {
+    commands.map((command) => (
       execSync(command, {
         stdio: [0, 1, 2],
         env,
-      });
-    });
+      })
+    ));
 
     return resolve();
   })
