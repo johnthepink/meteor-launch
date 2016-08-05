@@ -11,5 +11,5 @@
 * [Continuous Deployment](/cd/README.md)
 * [Examples](/examples/README.md)
   * [Basic](/examples/README.md#basic)
-  * [Crosswalk](/example/README.md#crosswalk)
+  * [Crosswalk](/examples/README.md#crosswalk)
   * [Kitchen Sink](/examples/README.md#kitchen-sink)
