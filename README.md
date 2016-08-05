@@ -17,3 +17,4 @@ $ launch testflight
 - [Docs site](http://newspring.github.io/meteor-launch/)
 - [Sample project](https://github.com/NewSpring/launch-basic-example)
 - [Sample project 2](https://github.com/NewSpring/launch-todos-example)
+- [Sample project 3](https://github.com/NewSpring/launch-crosswalk-example)

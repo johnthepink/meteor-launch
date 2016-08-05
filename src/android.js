@@ -1,5 +1,84 @@
 import { execSync } from "child_process";
+import rimraf from "rimraf";
+import { statSync } from "fs";
 import util from "./util";
+
+const buildFolder = {
+  root: "./.build/android",
+  crosswalk: "./.build/android/project/build/outputs/apk",
+};
+
+const unsignedApks = {
+  regular: `${buildFolder.root}/release-unsigned.apk`,
+  crosswalkArmv7: `${buildFolder.crosswalk}/android-armv7-release-unsigned.apk`,
+  crosswalkX86: `${buildFolder.crosswalk}/android-x86-release-unsigned.apk`,
+};
+
+const signedApks = {
+  regular: `${buildFolder.root}/production.apk`,
+  crosswalkArmv7: `${buildFolder.root}/production-armv7.apk`,
+  crosswalkX86: `${buildFolder.root}/production-x86.apk`,
+};
+
+const removeApks = () => {
+  console.log("Removing existing apk...");
+  Object.keys(signedApks).map((apk) => (
+    rimraf.sync(signedApks[apk])
+  ));
+};
+
+const findCrosswalkApks = () => {
+  try {
+    statSync(unsignedApks.crosswalkArmv7);
+    statSync(unsignedApks.crosswalkX86);
+    return true;
+  } catch (error) {
+    return false;
+  }
+};
+
+const getSignCommands = (isCrosswalk) => {
+  const signCommand = (apkPath) => (
+    `
+      jarsigner -verbose \
+        -sigalg SHA1withRSA \
+        -digestalg SHA1 \
+        -storepass $ANDROID_STORE_PASS \
+        ${apkPath} \
+        $ANDROID_KEY
+    `
+  );
+
+  if (isCrosswalk) {
+    return [
+      signCommand(unsignedApks.crosswalkArmv7),
+      signCommand(unsignedApks.crosswalkX86),
+    ];
+  }
+  return [
+    signCommand(unsignedApks.regular),
+  ];
+};
+
+const getAlignCommands = (isCrosswalk) => {
+  const alignCommand = (apkPath, output) => (
+    `
+      $ANDROID_ZIPALIGN 4 \
+        ${apkPath} \
+        ${output}
+    `
+  );
+
+  if (isCrosswalk) {
+    return [
+      alignCommand(unsignedApks.crosswalkArmv7, signedApks.crosswalkArmv7),
+      alignCommand(unsignedApks.crosswalkX86, signedApks.crosswalkX86),
+    ];
+  }
+  return [
+    alignCommand(unsignedApks.regular, signedApks.regular),
+  ];
+};
 
 const prepareApk = (env) => (
   new Promise((resolve) => {
@@ -8,40 +87,25 @@ const prepareApk = (env) => (
       return resolve();
     }
 
-    console.log("Removing existing apk...");
-    try {
-      execSync("rm .build/android/production.apk", {
-        stdio: [0, 1, 2],
-        env,
-      });
-    } catch (error) {
-      console.log("No apk to remove...");
-    }
+    removeApks();
+
+    const isCrosswalk = findCrosswalkApks();
 
     console.log("Signing Android apk...");
-    const signCommand = `
-      jarsigner -verbose \
-        -sigalg SHA1withRSA \
-        -digestalg SHA1 \
-        -storepass $ANDROID_STORE_PASS \
-        .build/android/release-unsigned.apk \
-        $ANDROID_KEY
-    `;
-    execSync(signCommand, {
-      stdio: [0, 1, 2],
-      env,
-    });
+    getSignCommands(isCrosswalk).map((command) => (
+      execSync(command, {
+        stdio: [0, 1, 2],
+        env,
+      })
+    ));
 
     console.log("Aligning Android apk...");
-    const alignCommand = `
-      $ANDROID_ZIPALIGN 4 \
-        .build/android/release-unsigned.apk \
-        .build/android/production.apk
-    `;
-    execSync(alignCommand, {
-      stdio: [0, 1, 2],
-      env,
-    });
+    getAlignCommands(isCrosswalk).map((command) => (
+      execSync(command, {
+        stdio: [0, 1, 2],
+        env,
+      })
+    ));
 
     return resolve();
   })
@@ -49,4 +113,6 @@ const prepareApk = (env) => (
 
 export default {
   prepareApk,
+  findCrosswalkApks,
+  signedApks,
 };

@@ -176,6 +176,21 @@ Finally, push your repo to GitHub, turn builds on for this project on Travis, an
 
 ---
 
+## Crosswalk
+
+In this example, we are going to use Travis to:
+
+1. Deploy server to Galaxy
+2. Build an Android app using Crosswalk
+3. Distribute app through [Hockey](https://hockeyapp.net)
+
+Setting up these actions are detailed about in the Basic example. Here are all the finished items:
+
+1. [Code on GitHub](https://github.com/NewSpring/launch-crosswalk-example)
+2. [Build on Travis](https://travis-ci.org/NewSpring/launch-crosswalk-example)
+3. [Site on Heroku](https://launch-crosswalk-example.herokuapp.com/)
+4. [App download on Hockey](https://rink.hockeyapp.net/apps/b8ce93866d44406d950cf9a390b235e1)
+
 ## Kitchen Sink
 
 In this example, we are going to use Travis's build matrix to:

@@ -17,3 +17,4 @@ You will need to generate an auth file to allow uploading. To do this, navigate 
   "PLAY_AUTH_FILE": ""
 }
 ```
+*Crosswalk*: If you use the Crosswalk webview, two different builds of your app are generated. Both of these will be uploaded to Google Play with different build numbers.

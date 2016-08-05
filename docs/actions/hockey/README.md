@@ -32,3 +32,5 @@ Generate an API key for your Android app on Hockey. You will also need the id of
   "ANDROID_HOCKEY_ID": "idhere"
 }
 ```
+*Crosswalk*: If you use the Crosswalk webview, two different builds of your app are generated. Both of these will be uploaded to Hockey with different build numbers.
+
