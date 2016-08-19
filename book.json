@@ -5,7 +5,7 @@
   "plugins": ["edit-link", "github", "prism", "-highlight"],
   "pluginsConfig": {
     "edit-link": {
-        "base": "https://github.com/newspring/meteor-launch/edit/master/docs",
+        "base": "https://github.com/newspring/meteor-launch/edit/master/book",
         "label": "Edit On GitHub"
     },
     "github": {
