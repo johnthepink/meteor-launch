@@ -9,7 +9,8 @@
     "lint": "./node_modules/.bin/eslint src",
     "pretest": "npm run build && npm link",
     "test": "./node_modules/.bin/mocha --reporter spec --full-trace lib/__test/index.js",
-    "posttest": "npm run lint"
+    "posttest": "npm run lint",
+    "build:book": "gitbook build && mv _book docs"
   },
   "repository": {
     "type": "git",

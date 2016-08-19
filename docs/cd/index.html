@@ -1,0 +1,414 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <title>Continuous Deployment · Launch</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../examples/" />
+    
+    
+    <link rel="prev" href="../actions/playstore/" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../">
+            
+                <a href="../#getting-started">
+            
+                    
+                    Getting Started
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../actions/">
+            
+                <a href="../actions/">
+            
+                    
+                    Actions
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../actions/build/">
+            
+                <a href="../actions/build/">
+            
+                    
+                    build
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../actions/galaxy/">
+            
+                <a href="../actions/galaxy/">
+            
+                    
+                    galaxy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../actions/hockey/">
+            
+                <a href="../actions/hockey/">
+            
+                    
+                    hockey
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../actions/testflight/">
+            
+                <a href="../actions/testflight/">
+            
+                    
+                    testflight
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../actions/playstore/">
+            
+                <a href="../actions/playstore/">
+            
+                    
+                    playstore
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Continuous Deployment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../examples/">
+            
+                <a href="../examples/">
+            
+                    
+                    Examples
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../examples/">
+            
+                <a href="../examples/#basic">
+            
+                    
+                    Basic
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../examples/">
+            
+                <a href="../examples/#crosswalk">
+            
+                    
+                    Crosswalk
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../examples/">
+            
+                <a href="../examples/#kitchen-sink">
+            
+                    
+                    Kitchen Sink
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Continuous Deployment</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="continuous-deployment">Continuous Deployment</h1><p>You can use <code>launch</code> on your local machine. But, its real power comes when you get it running on a CD server, such as <a href="https://travis-ci.org/" target="_blank">Travis</a> or <a href="https://circleci.com/" target="_blank">CircleCI</a>. Then, you can have <code>launch</code> distribute your app automatically after merging a PR, or creating a GitHub release.</p><p>Since we don&apos;t want to commit our <code>launch.json</code> and other sensitive files to our git repo, you will need a different solution for getting those files on to your CD server.</p><h2 id="travis">Travis</h2><p>If you use Travis, you can use their command line tool to encrypt all of your sensitive files, and then commit the encrypted files to your git repo. Then, when Travis starts, it will decrypt the files using two environment variables that it keeps secret, and place them back in your project directory on the CD server. Super nice!</p><p><a href="https://github.com/NewSpring/launch-basic-example" target="_blank">Here</a> is an example from a sample project.</p><pre><code class="lang-shell">$ tar cvf secrets.tar launch.json .keystore deployment_token.json
+$ travis encrypt-file secrets.tar .travis/secrets.tar.enc --add</code></pre>
+<p>First, this takes our sensitive files and creates a tar ball. Then, the Travis command line tool encrypts the tarball, and places it in the <code>.travis</code> directory. And, adding the <code>--add</code> flag automatically adds the decryption process to your <code>.travis.yml</code>.</p><h2 id="circleci">CircleCI</h2><p>CircleCI doesn&apos;t have the same encryption tool that Travis has, but you could easily story the contents of your sensitive files in environment variables. Then, echo the contents of the files back in to your project directory when the build starts.</p><pre><code>$ echo $LAUNCH_FILE &gt; launch.json</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../actions/playstore/" class="navigation navigation-prev " aria-label="Previous page: playstore">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../examples/" class="navigation navigation-next " aria-label="Next page: Examples">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Continuous Deployment","level":"1.3","depth":1,"next":{"title":"Examples","level":"1.4","depth":1,"path":"examples/README.md","ref":"examples/README.md","articles":[{"title":"Basic","level":"1.4.1","depth":2,"anchor":"#basic","path":"examples/README.md","ref":"examples/README.md#basic","articles":[]},{"title":"Crosswalk","level":"1.4.2","depth":2,"anchor":"#crosswalk","path":"examples/README.md","ref":"examples/README.md#crosswalk","articles":[]},{"title":"Kitchen Sink","level":"1.4.3","depth":2,"anchor":"#kitchen-sink","path":"examples/README.md","ref":"examples/README.md#kitchen-sink","articles":[]}]},"previous":{"title":"playstore","level":"1.2.5","depth":2,"path":"actions/playstore/README.md","ref":"actions/playstore/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","github","prism","-highlight"],"root":"./book","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"edit-link":{"label":"Edit On GitHub","base":"https://github.com/newspring/meteor-launch/edit/master/docs"},"github":{"url":"https://github.com/newspring/meteor-launch"},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Launch","gitbook":"*","description":"Automating meteor builds to the AppStore, TestFlight, Hockey, Google Play, and more later."},"file":{"path":"cd/README.md","mtime":"2016-08-08T18:18:53.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-08-19T15:28:45.135Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

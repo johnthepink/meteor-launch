@@ -1,5 +1,5 @@
 {
-  "root": "./docs",
+  "root": "./book",
   "title": "Launch",
   "description": "Automating meteor builds to the AppStore, TestFlight, Hockey, Google Play, and more later.",
   "plugins": ["edit-link", "github", "prism", "-highlight"],
