@@ -1,11 +1,6 @@
 #!/usr/bin/env node
 
 import vorpal from "vorpal";
-import {
-  join,
-  resolve,
-} from "path";
-import { extend } from "underscore";
 
 import meteor from "./meteor";
 import galaxy from "./galaxy";
@@ -17,22 +12,9 @@ import util from "./util";
 
 const Launch = vorpal();
 
-let launchFile;
-let launchVars;
-let otherVars;
 let superEnv;
-
 if (util.launchFile()) {
-  launchFile = join(process.cwd(), "launch.json");
-  // eslint-disable-next-line global-require
-  launchVars = require(launchFile);
-  otherVars = {
-    SIGH_OUTPUT_PATH: process.cwd(),
-    GYM_OUTPUT_DIRECTORY: process.cwd(),
-    FL_REPORT_PATH: join(process.cwd(), ".build", "ios"),
-    XCODE_PROJECT: resolve(".build", "ios", "project", `${launchVars.XCODE_SCHEME_NAME}.xcodeproj`),
-  };
-  superEnv = extend(launchVars, otherVars, process.env);
+  superEnv = util.generateSettings(process.env);
 }
 
 Launch
