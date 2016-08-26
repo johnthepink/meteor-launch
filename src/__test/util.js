@@ -1,13 +1,7 @@
-import { execSync } from "child_process";
+import rimraf from "rimraf";
 
 const cleanLaunchFile = () => {
-  try {
-    execSync("rm launch.json", {
-      stdio: [0],
-    });
-  } catch (e) {
-    // no launch file
-  }
+  rimraf.sync("launch.json");
 };
 
 export default {
