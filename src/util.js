@@ -17,7 +17,6 @@ const generateSettings = (originalEnv) => {
   const launchFile = join(process.cwd(), "launch.json");
   // eslint-disable-next-line global-require
   const launchVars = require(launchFile);
-  console.log(launchVars);
   const otherVars = {
     SIGH_OUTPUT_PATH: process.cwd(),
     GYM_OUTPUT_DIRECTORY: process.cwd(),
@@ -32,9 +31,17 @@ const generateSettings = (originalEnv) => {
       "project",
       `${launchVars.XCODE_SCHEME_NAME}.xcodeproj`
     ),
-    ANDROID_ZIPALIGN: pathResolve(launchVars.ANDROID_ZIPALIGN),
   };
-  return extend(launchVars, otherVars, originalEnv);
+  const result = extend(launchVars, otherVars, originalEnv);
+  // make relative
+  return extend(
+    result,
+    {
+      ANDROID_ZIPALIGN: result.ANDROID_ZIPALIGN[0] === "~" ?
+        join(process.env.HOME, result.ANDROID_ZIPALIGN.slice(1)) :
+        pathResolve(result.ANDROID_ZIPALIGN),
+    }
+  );
 };
 
 const init = () => (
