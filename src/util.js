@@ -4,10 +4,10 @@ import {
   readFileSync,
   writeFileSync,
   statSync,
-  unlinkSync,
   mkdirSync,
 } from "fs";
 import { execSync } from "child_process";
+import rimraf from "rimraf";
 
 const init = () => (
   new Promise((resolve) => {
@@ -78,9 +78,7 @@ const removeFastfile = () => (
   new Promise((resolve) => {
     const fastfileTarget = join(process.cwd(), ".fastlane");
 
-    unlinkSync(`${fastfileTarget}/Fastfile`);
-    unlinkSync(`${fastfileTarget}/README.md`);
-    unlinkSync(fastfileTarget);
+    rimraf.sync(fastfileTarget);
 
     return resolve("Fastfile deleted...");
   })
