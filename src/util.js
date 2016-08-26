@@ -1,4 +1,7 @@
-import { join } from "path";
+import {
+  join,
+  resolve as pathResolve,
+} from "path";
 import {
   stat,
   readFileSync,
@@ -8,6 +11,31 @@ import {
 } from "fs";
 import { execSync } from "child_process";
 import rimraf from "rimraf";
+import { extend } from "underscore";
+
+const generateSettings = (originalEnv) => {
+  const launchFile = join(process.cwd(), "launch.json");
+  // eslint-disable-next-line global-require
+  const launchVars = require(launchFile);
+  console.log(launchVars);
+  const otherVars = {
+    SIGH_OUTPUT_PATH: process.cwd(),
+    GYM_OUTPUT_DIRECTORY: process.cwd(),
+    FL_REPORT_PATH: join(
+      process.cwd(),
+      ".build",
+      "ios"
+    ),
+    XCODE_PROJECT: pathResolve(
+      ".build",
+      "ios",
+      "project",
+      `${launchVars.XCODE_SCHEME_NAME}.xcodeproj`
+    ),
+    ANDROID_ZIPALIGN: pathResolve(launchVars.ANDROID_ZIPALIGN),
+  };
+  return extend(launchVars, otherVars, originalEnv);
+};
 
 const init = () => (
   new Promise((resolve) => {
@@ -101,6 +129,7 @@ const hasPlatform = (platform) => {
 };
 
 export default {
+  generateSettings,
   launchFile,
   init,
   importCerts,
