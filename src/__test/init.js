@@ -27,7 +27,7 @@ describe("init", () => {
       env: process.env,
     });
 
-    assert.equal(
+    assert.include(
       output.toString(),
       "launch.json created. Open it and fill out the vars\n"
     );
