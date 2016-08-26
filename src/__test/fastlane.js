@@ -9,11 +9,11 @@ describe("fastlane assets", () => {
     util.addFastfile()
       .then(() => {
         try {
-          statSync(`${process.cwd()}/.fastlane`);
-          assert.isOk(true);
+          const result = statSync(`${process.cwd()}/.fastlane`);
+          assert.isOk(result);
         } catch (e) {
           // should not get here because assets exist
-          assert.isNotOk(true);
+          assert.fail();
         }
       });
   });
@@ -24,9 +24,9 @@ describe("fastlane assets", () => {
         try {
           statSync(`${process.cwd()}/.fastlane`);
           // should not get here because assets don't exist
-          assert.isNotOk(true);
+          assert.fail();
         } catch (e) {
-          assert.isOk(true);
+          assert.isOk(e);
         }
       });
   });
