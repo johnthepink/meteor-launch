@@ -7,7 +7,7 @@ import { resolve } from "path";
 import util from "../util";
 
 describe("settings", () => {
-  describe("zipalign", () => {
+  describe("ANDROID_ZIPALIGN", () => {
     beforeEach(() => {
       delete process.env.ANDROID_ZIPALIGN;
       // eslint-disable-next-line
