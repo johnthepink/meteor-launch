@@ -8,6 +8,8 @@ The `build` action will build your Meteor project. This action is required prior
 
 What all it builds depends on what platforms you have added to your Meteor project. If you are wanting to build and deploy iOS or Android Cordova apps, make sure you have those [platforms]((https://www.meteor.com/tutorials/blaze/running-on-mobile)) added to your Meteor project.
 
+`build` assumes that you are in the root of your Meteor project, unless you specify the `METEOR_INPUT_DIR` setting.
+
 `build` will place all of your built files in to the `.build` folder inside your Meteor project, unless you specify a `METEOR_OUTPUT_DIR`. Keep this in mind when filling out paths in your `launch.json`. If you do set `METEOR_OUTPUT_DIR`, be aware that it should either be outside your meteor project directory, or it should be a hidden directory.
 
 #### iOS
