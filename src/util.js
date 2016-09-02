@@ -28,6 +28,7 @@ const generateSettings = (originalEnv) => {
   // eslint-disable-next-line global-require
   const launchVars = require(launchFile);
   launchVars.METEOR_OUTPUT_DIR = setMeteorOutputDir(launchVars.METEOR_OUTPUT_DIR);
+  launchVars.METEOR_OUTPUT_ABSOLUTE = pathResolve(launchVars.METEOR_OUTPUT_DIR);
   const otherVars = {
     SIGH_OUTPUT_PATH: process.cwd(),
     GYM_OUTPUT_DIRECTORY: process.cwd(),

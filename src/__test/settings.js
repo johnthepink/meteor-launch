@@ -35,7 +35,7 @@ describe("settings", () => {
       );
     });
   });
-  describe("build dir", () => {
+  describe("METEOR_OUTPUT_DIR", () => {
     beforeEach(() => {
       delete require.cache[
         `${process.cwd()}/launch.json`
@@ -58,6 +58,38 @@ describe("settings", () => {
       execSync(`echo '{"METEOR_OUTPUT_DIR": "../nonsense"}' > launch.json`);
       const results = util.generateSettings(process.env);
       assert.equal(results.METEOR_OUTPUT_DIR, "../nonsense");
+    });
+  });
+  describe("METEOR_OUTPUT_ABSOLUTE", () => {
+    beforeEach(() => {
+      delete require.cache[
+        `${process.cwd()}/launch.json`
+      ];
+    });
+    it("should set as absolute of .build if no METEOR_OUTPUT_DIR", () => {
+      // eslint-disable-next-line
+      execSync(`echo '{}' > launch.json`);
+      const results = util.generateSettings(process.env);
+      assert.equal(results.METEOR_OUTPUT_ABSOLUTE, `${process.cwd()}/.build`);
+    });
+    it("should set as absolute of .build if blank METEOR_OUTPUT_DIR", () => {
+      // eslint-disable-next-line
+      execSync(`echo '{"METEOR_OUTPUT_DIR": ""}' > launch.json`);
+      const results = util.generateSettings(process.env);
+      assert.equal(results.METEOR_OUTPUT_ABSOLUTE, `${process.cwd()}/.build`);
+    });
+    it("should set absolute of METEOR_OUTPUT_DIR if exists", () => {
+      // eslint-disable-next-line
+      execSync(`echo '{"METEOR_OUTPUT_DIR": "../nonsense"}' > launch.json`);
+      const results = util.generateSettings(process.env);
+      assert.equal(
+        results.METEOR_OUTPUT_ABSOLUTE,
+        resolve(
+          process.cwd(),
+          "..",
+          "nonsense"
+        )
+      );
     });
   });
   describe("FL_REPORT_PATH", () => {
