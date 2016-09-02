@@ -13,20 +13,36 @@ import { execSync } from "child_process";
 import rimraf from "rimraf";
 import { extend } from "underscore";
 
+const setMeteorOutputDir = (dir) => {
+  if (
+    typeof dir === "undefined" ||
+    dir.length === 0
+  ) {
+    return ".build";
+  }
+  return dir;
+};
+
 const generateSettings = (originalEnv) => {
   const launchFile = join(process.cwd(), "launch.json");
-  // eslint-disable-next-line global-require
-  const launchVars = require(launchFile);
+  let launchVars = {};
+  try {
+    // eslint-disable-next-line global-require
+    launchVars = require(launchFile);
+    // eslint-disable-next-line no-empty
+  } catch (error) { return {}; }
+  launchVars.METEOR_OUTPUT_DIR = setMeteorOutputDir(launchVars.METEOR_OUTPUT_DIR);
+  launchVars.METEOR_OUTPUT_ABSOLUTE = pathResolve(launchVars.METEOR_OUTPUT_DIR);
   const otherVars = {
     SIGH_OUTPUT_PATH: process.cwd(),
     GYM_OUTPUT_DIRECTORY: process.cwd(),
     FL_REPORT_PATH: join(
       process.cwd(),
-      ".build",
+      launchVars.METEOR_OUTPUT_DIR,
       "ios"
     ),
     XCODE_PROJECT: pathResolve(
-      ".build",
+      launchVars.METEOR_OUTPUT_DIR,
       "ios",
       "project",
       `${launchVars.XCODE_SCHEME_NAME}.xcodeproj`

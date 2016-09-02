@@ -34,7 +34,7 @@ platform :ios do
     )
 
     update_project_provisioning(
-      xcodeproj: ".build/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
+      xcodeproj: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
       profile: lane_context[SharedValues::SIGH_PROFILE_PATH],
       target_filter: ENV['XCODE_SCHEME_NAME'],
       build_configuration: "Release"
@@ -42,7 +42,7 @@ platform :ios do
 
     gym(
       scheme: ENV['XCODE_SCHEME_NAME'],
-      project: ".build/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
+      project: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
       include_bitcode: false
     )
   end
@@ -56,7 +56,7 @@ platform :ios do
     )
 
     update_project_provisioning(
-      xcodeproj: ".build/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
+      xcodeproj: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
       profile: lane_context[SharedValues::SIGH_PROFILE_PATH],
       target_filter: ENV['XCODE_SCHEME_NAME'],
       build_configuration: "Release"
@@ -65,7 +65,7 @@ platform :ios do
     gym(
       use_legacy_build_api: true,
       scheme: ENV['XCODE_SCHEME_NAME'],
-      project: ".build/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
+      project: "#{ENV['METEOR_OUTPUT_ABSOLUTE']}/ios/project/#{ENV['XCODE_SCHEME_NAME']}.xcodeproj",
       include_bitcode: false,
       export_method: "ad-hoc"
     )
