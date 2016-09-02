@@ -13,6 +13,16 @@ import { execSync } from "child_process";
 import rimraf from "rimraf";
 import { extend } from "underscore";
 
+const setMeteorInputDir = (dir) => {
+  if (
+    typeof dir === "undefined" ||
+    dir.length === 0
+  ) {
+    return process.cwd();
+  }
+  return pathResolve(process.cwd(), dir);
+};
+
 const setMeteorOutputDir = (dir) => {
   if (
     typeof dir === "undefined" ||
@@ -31,6 +41,7 @@ const generateSettings = (originalEnv) => {
     launchVars = require(launchFile);
     // eslint-disable-next-line no-empty
   } catch (error) { return {}; }
+  launchVars.METEOR_INPUT_DIR = setMeteorInputDir(launchVars.METEOR_INPUT_DIR);
   launchVars.METEOR_OUTPUT_DIR = setMeteorOutputDir(launchVars.METEOR_OUTPUT_DIR);
   launchVars.METEOR_OUTPUT_ABSOLUTE = pathResolve(launchVars.METEOR_OUTPUT_DIR);
   const otherVars = {

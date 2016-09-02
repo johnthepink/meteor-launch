@@ -35,6 +35,37 @@ describe("settings", () => {
       );
     });
   });
+  describe("METEOR_INPUT_DIR", () => {
+    beforeEach(() => {
+      delete require.cache[
+        `${process.cwd()}/launch.json`
+      ];
+    });
+    it("should be root directory if doesn't exists", () => {
+      // eslint-disable-next-line
+      execSync(`echo '{}' > launch.json`);
+      const results = util.generateSettings(process.env);
+      assert.equal(results.METEOR_INPUT_DIR, process.cwd());
+    });
+    it("should be root directory if blank", () => {
+      // eslint-disable-next-line
+      execSync(`echo '{"METEOR_INPUT_DIR": ""}' > launch.json`);
+      const results = util.generateSettings(process.env);
+      assert.equal(results.METEOR_INPUT_DIR, process.cwd());
+    });
+    it("should be absolute path to directory if set", () => {
+      // eslint-disable-next-line
+      execSync(`echo '{"METEOR_INPUT_DIR": "nonsense"}' > launch.json`);
+      const results = util.generateSettings(process.env);
+      assert.equal(
+        results.METEOR_INPUT_DIR,
+        resolve(
+          process.cwd(),
+          "nonsense"
+        )
+      );
+    });
+  });
   describe("METEOR_OUTPUT_DIR", () => {
     beforeEach(() => {
       delete require.cache[
