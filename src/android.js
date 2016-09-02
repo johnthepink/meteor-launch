@@ -3,9 +3,12 @@ import rimraf from "rimraf";
 import { statSync } from "fs";
 import util from "./util";
 
+const settings = util.generateSettings(process.env);
+const outputDir = settings.METEOR_OUTPUT_ABSOLUTE;
+
 const buildFolder = {
-  root: "./.build/android",
-  crosswalk: "./.build/android/project/build/outputs/apk",
+  root: `${outputDir}/android`,
+  crosswalk: `${outputDir}/android/project/build/outputs/apk`,
 };
 
 const unsignedApks = {

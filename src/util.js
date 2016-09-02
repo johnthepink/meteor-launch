@@ -25,8 +25,12 @@ const setMeteorOutputDir = (dir) => {
 
 const generateSettings = (originalEnv) => {
   const launchFile = join(process.cwd(), "launch.json");
-  // eslint-disable-next-line global-require
-  const launchVars = require(launchFile);
+  let launchVars = {};
+  try {
+    // eslint-disable-next-line global-require
+    launchVars = require(launchFile);
+    // eslint-disable-next-line no-empty
+  } catch (error) { }
   launchVars.METEOR_OUTPUT_DIR = setMeteorOutputDir(launchVars.METEOR_OUTPUT_DIR);
   launchVars.METEOR_OUTPUT_ABSOLUTE = pathResolve(launchVars.METEOR_OUTPUT_DIR);
   const otherVars = {
