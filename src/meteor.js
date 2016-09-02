@@ -8,11 +8,13 @@ const build = (env) => (
       return reject("Please provide a server as the second argument");
     }
 
-    let buildAction = `meteor build ${env.METEOR_OUTPUT_DIR}`;
+    let buildAction = `cd ${env.METEOR_INPUT_DIR} &&`;
+    buildAction += ` meteor build ${env.METEOR_OUTPUT_DIR}`;
     buildAction += ` --architecture os.linux.x86_64 --server ${meteorServer}`;
     if (process.argv[2]) {
       buildAction += ` --mobile-settings ${process.argv[2]}`;
     }
+    buildAction += ` && cd ${process.cwd()}`;
 
     try {
       console.log("Building meteor...");
