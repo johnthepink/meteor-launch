@@ -1,5 +1,6 @@
 ## NEXT
 
+* Support for Meteor project directory other than root with `METEOR_INPUT_DIR`. (#83)
 * Support for custom build directory with `METEOR_OUTPUT_DIR`. (#81)
 
 ## 0.2.7
