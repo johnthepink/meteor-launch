@@ -18,12 +18,6 @@ if (util.launchFile()) {
 }
 
 Launch
-  .command("test", "test the thing")
-  .action(() => {
-    console.log("testing");
-  });
-
-Launch
   .command("init", "Generates launch.json file for environment vars")
   .action(() => {
     util.init(superEnv)
