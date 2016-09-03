@@ -184,4 +184,17 @@ describe("settings", () => {
       ));
     });
   });
+  describe("SIGH_OUTPUT_PATH", () => {
+    beforeEach(() => {
+      delete require.cache[
+        `${process.cwd()}/launch.json`
+      ];
+    });
+    it("should be the current directory", () => {
+      // eslint-disable-next-line
+      execSync(`echo '{}' > launch.json`);
+      const results = util.generateSettings(process.env);
+      assert.equal(results.SIGH_OUTPUT_PATH, process.cwd());
+    });
+  });
 });
