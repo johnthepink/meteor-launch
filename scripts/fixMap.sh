@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-sed -i .bak 's/..\/src/src/' coverage/lcov.info
+sed -i.bak 's/..\/src/src/' coverage/lcov.info
