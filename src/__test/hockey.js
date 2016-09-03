@@ -5,7 +5,7 @@ import { assert } from "chai";
 
 import hockey from "../hockey";
 
-describe("android", () => {
+describe("hockey", () => {
   describe("exported functions", () => {
     const exportedFunctions = [
       "uploadIOS",

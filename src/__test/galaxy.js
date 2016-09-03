@@ -5,7 +5,7 @@ import { assert } from "chai";
 
 import galaxy from "../galaxy";
 
-describe("android", () => {
+describe("galaxy", () => {
   describe("exported functions", () => {
     const exportedFunctions = [
       "deploy",
