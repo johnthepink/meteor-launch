@@ -1,4 +1,4 @@
-/* global describe it beforeEach */
+/* global describe it beforeEach afterEach */
 
 // eslint-disable-next-line
 import { assert } from "chai";
@@ -208,6 +208,18 @@ describe("settings", () => {
       execSync(`echo '{}' > launch.json`);
       const results = util.generateSettings(process.env);
       assert.equal(results.GYM_OUTPUT_DIRECTORY, process.cwd());
+    });
+  });
+  describe("overrides", () => {
+    it("should override launch file with env vars", () => {
+      // eslint-disable-next-line
+      execSync(`echo '{"METEOR_OUTPUT_DIR": "something"}' > launch.json`);
+      process.env.METEOR_OUTPUT_DIR = "nothing";
+      const results = util.generateSettings(process.env);
+      assert.equal(results.METEOR_OUTPUT_DIR, "nothing");
+    });
+    afterEach(() => {
+      delete process.env.METEOR_OUTPUT_DIR;
     });
   });
 });
