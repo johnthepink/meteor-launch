@@ -5,3 +5,4 @@ import "./fastlane";
 import "./settings";
 import "./android";
 import "./galaxy";
+import "./hockey";
