@@ -197,4 +197,17 @@ describe("settings", () => {
       assert.equal(results.SIGH_OUTPUT_PATH, process.cwd());
     });
   });
+  describe("GYM_OUTPUT_DIRECTORY", () => {
+    beforeEach(() => {
+      delete require.cache[
+        `${process.cwd()}/launch.json`
+      ];
+    });
+    it("should be the current directory", () => {
+      // eslint-disable-next-line
+      execSync(`echo '{}' > launch.json`);
+      const results = util.generateSettings(process.env);
+      assert.equal(results.GYM_OUTPUT_DIRECTORY, process.cwd());
+    });
+  });
 });
