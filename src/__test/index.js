@@ -8,3 +8,4 @@ import "./galaxy";
 import "./hockey";
 import "./iTunes";
 import "./meteor";
+import "./play";
