@@ -12,7 +12,7 @@
     "posttest": "npm run lint",
     "coverage": "istanbul cover -x '**/__test/**' ./node_modules/mocha/bin/_mocha -- --reporter dot --full-trace lib/__test/index.js",
     "postcoverage": "remap-istanbul --input coverage/coverage.json --type lcovonly --output coverage/lcov.info && npm run send:coverage",
-    "send:coverage": "sed -i .bak 's/..\/src/src/' coverage/lcov.info && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "send:coverage": "scripts/fixMap.sh && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
 
     "build:book": "gitbook build && rm -rf docs && mv _book docs"
   },
