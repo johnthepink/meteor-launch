@@ -1,3 +1,4 @@
+import "./launch";
 import "./help";
 import "./init";
 import "./fastlane";
