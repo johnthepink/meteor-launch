@@ -3,3 +3,5 @@ launch.json
 npm-debug.log
 lib
 _book
+coverage
+.coveralls.yml
