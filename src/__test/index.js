@@ -6,3 +6,4 @@ import "./settings";
 import "./android";
 import "./galaxy";
 import "./hockey";
+import "./iTunes";
