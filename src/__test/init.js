@@ -2,6 +2,7 @@
 
 import { join } from "path";
 import { stat } from "fs";
+// eslint-disable-next-line
 import { assert } from "chai";
 import { execSync } from "child_process";
 import util from "./util";

@@ -1,5 +1,6 @@
 /* global describe it */
 
+// eslint-disable-next-line
 import { assert } from "chai";
 import { statSync } from "fs";
 import util from "../util";
