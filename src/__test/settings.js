@@ -1,5 +1,6 @@
 /* global describe it beforeEach */
 
+// eslint-disable-next-line
 import { assert } from "chai";
 import { execSync } from "child_process";
 import { resolve } from "path";
