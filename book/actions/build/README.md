@@ -10,7 +10,7 @@ What all it builds depends on what platforms you have added to your Meteor proje
 
 `build` assumes that you are in the root of your Meteor project, unless you specify the `METEOR_INPUT_DIR` setting.
 
-`build` will place all of your built files in to the `.build` folder inside your Meteor project, unless you specify a `METEOR_OUTPUT_DIR`. Keep this in mind when filling out paths in your `launch.json`. If you do set `METEOR_OUTPUT_DIR`, be aware that it should either be outside your meteor project directory, or it should be a hidden directory.
+`build` will place all of your built files in to the `.build` folder inside your Meteor project, unless you specify a `METEOR_OUTPUT_DIR`. Keep this in mind when filling out paths in your `launch.json`. If you do set `METEOR_OUTPUT_DIR`, be aware that it should either be outside your meteor project directory, or it should be a hidden directory. If you set `METEOR_OUTPUT_DIR` as a relative path, it should be set relative to your meteor project. So, keep this in mind if you are also using `METEOR_INPUT_DIR`.
 
 #### iOS
 
