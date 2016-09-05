@@ -4,6 +4,7 @@
 import { assert } from "chai";
 import { execSync } from "child_process";
 import { resolve } from "path";
+import { statSync } from "fs";
 
 import util from "../util";
 
@@ -248,5 +249,39 @@ describe("launchFile", () => {
     process.argv = [null, null, "someaction"];
     const result = util.launchFile();
     assert.isTrue(result);
+  });
+});
+describe.only("init", () => {
+  it("should create launch.json if doesn't exist", () => {
+    util.init()
+      .then((response) => {
+        assert.include(
+          response,
+          "launch.json created. Open it and fill out the vars"
+        );
+        try {
+          statSync("launch.json");
+          assert.isOk();
+        } catch (error) {
+          assert.isNotOk();
+        }
+      });
+  });
+  it("should do nothing if launch.json exists", () => {
+    // eslint-disable-next-line
+    execSync(`echo '{}' > launch.json`);
+    util.init()
+      .then((response) => {
+        assert.include(
+          response,
+          "launch.json already exists"
+        );
+        try {
+          statSync("launch.json");
+          assert.isNotOk();
+        } catch (error) {
+          assert.isOk();
+        }
+      });
   });
 });
