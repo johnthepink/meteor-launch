@@ -289,7 +289,7 @@ describe("init", () => {
       });
   });
 });
-describe.only("importCerts", () => {
+describe("importCerts", () => {
   it("should return Promise", () => {
     process.env.PATH = `${process.cwd()}/src/__test/mocks:${process.env.PATH}`;
     const result = util.importCerts();
