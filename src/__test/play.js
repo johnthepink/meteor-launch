@@ -16,4 +16,13 @@ describe("play", () => {
       })
     ));
   });
+  describe("uploadPlayStore", () => {
+    it("should do nothing if no android platform", () => {
+      process.env.PATH = `${process.cwd()}/src/__test/mocks/ios:${process.env.PATH}`;
+      play.uploadPlayStore()
+        .then((result) => {
+          assert.equal(result, "skipped");
+        });
+    });
+  });
 });

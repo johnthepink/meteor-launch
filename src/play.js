@@ -6,7 +6,7 @@ const uploadPlayStore = (env) => (
   new Promise((resolve) => {
     if (!util.hasPlatform("android")) {
       console.log("Skipping Android upload to Play Store...");
-      return resolve();
+      return resolve("skipped");
     }
 
     try {
