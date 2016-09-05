@@ -79,6 +79,7 @@ const init = () => (
     } catch (e) {
       /* istanbul ignore next */
       console.log("Installing fastlane...");
+      /* istanbul ignore next */
       execSync("sudo gem install fastlane");
     }
 
@@ -114,6 +115,7 @@ const launchFile = () => {
   } catch (e) {
     /* istanbul ignore next */
     console.log("launch.json not found. Please run: launch init");
+    /* istanbul ignore next */
     process.exit();
   }
   return true;
