@@ -12,7 +12,9 @@ const uploadPlayStore = (env) => (
     try {
       execSync("which playup");
     } catch (e) {
+      /* istanbul ignore next */
       console.log("Installing playup...");
+      /* istanbul ignore next */
       execSync("npm install -g playup");
     }
 
