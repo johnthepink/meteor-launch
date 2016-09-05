@@ -7,7 +7,7 @@ import { resolve } from "path";
 
 import util from "../util";
 
-describe("settings", () => {
+describe("generateSettings", () => {
   describe("ANDROID_ZIPALIGN", () => {
     beforeEach(() => {
       delete process.env.ANDROID_ZIPALIGN;
@@ -221,5 +221,32 @@ describe("settings", () => {
     afterEach(() => {
       delete process.env.METEOR_OUTPUT_DIR;
     });
+  });
+});
+describe("launchFile", () => {
+  describe("should short circuit if", () => {
+    it("init action", () => {
+      process.argv = [null, null, "init"];
+      const result = util.launchFile();
+      assert.isFalse(result);
+    });
+    it("help action", () => {
+      process.argv = [null, null, "help"];
+      const result = util.launchFile();
+      assert.isFalse(result);
+    });
+    it("no action", () => {
+      process.argv = [];
+      const result = util.launchFile();
+      assert.isFalse(result);
+    });
+  });
+  it("should error if no launch.json");
+  it("should return true if launch.json", () => {
+    // eslint-disable-next-line
+    execSync(`echo '{}' > launch.json`);
+    process.argv = [null, null, "someaction"];
+    const result = util.launchFile();
+    assert.isTrue(result);
   });
 });
