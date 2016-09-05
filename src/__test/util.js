@@ -251,7 +251,7 @@ describe("launchFile", () => {
     assert.isTrue(result);
   });
 });
-describe.only("init", () => {
+describe("init", () => {
   it("should create launch.json if doesn't exist", () => {
     util.init()
       .then((response) => {
