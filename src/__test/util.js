@@ -9,6 +9,10 @@ import { statSync } from "fs";
 import util from "../util";
 
 describe("generateSettings", () => {
+  it("should return a blank object if no launch file", () => {
+    const results = util.generateSettings({});
+    assert.deepEqual(results, {});
+  });
   describe("ANDROID_ZIPALIGN", () => {
     beforeEach(() => {
       delete process.env.ANDROID_ZIPALIGN;
