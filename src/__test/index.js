@@ -1,8 +1,7 @@
 import "./launch";
-import "./help";
-import "./init";
+import "./actions";
 import "./fastlane";
-import "./settings";
+import "./util";
 import "./android";
 import "./galaxy";
 import "./hockey";
