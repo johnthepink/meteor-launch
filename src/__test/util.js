@@ -289,3 +289,28 @@ describe("init", () => {
       });
   });
 });
+describe.only("importCerts", () => {
+  it("should return Promise", () => {
+    process.env.PATH = `${process.cwd()}/src/__test/mocks:${process.env.PATH}`;
+    const result = util.importCerts();
+    assert.include(result.toString(), "Promise");
+  });
+  it("should just work", () => {
+    process.env.PATH = `${process.cwd()}/src/__test/mocks:${process.env.PATH}`;
+    util.importCerts()
+      .then(() => assert.isOk())
+    ;
+  });
+});
+describe("hasPlatform", () => {
+  it("should return true if has platform", () => {
+    process.env.PATH = `${process.cwd()}/src/__test/mocks:${process.env.PATH}`;
+    const result = util.hasPlatform("android");
+    assert.isTrue(result);
+  });
+  it("should return false if doesn't have platform", () => {
+    process.env.PATH = `${process.cwd()}/src/__test/mocks:${process.env.PATH}`;
+    const result = util.hasPlatform("nonplatform");
+    assert.isFalse(result);
+  });
+});
