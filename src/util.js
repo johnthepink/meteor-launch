@@ -76,8 +76,8 @@ const init = () => (
     const launchFile = join(process.cwd(), "launch.json");
     try {
       execSync("which fastlane");
-    /* istanbul ignore next */
     } catch (e) {
+      /* istanbul ignore next */
       console.log("Installing fastlane...");
       execSync("sudo gem install fastlane");
     }
@@ -111,8 +111,8 @@ const launchFile = () => {
 
   try {
     statSync(`${process.cwd()}/launch.json`);
-  /* istanbul ignore next */
   } catch (e) {
+    /* istanbul ignore next */
     console.log("launch.json not found. Please run: launch init");
     process.exit();
   }
