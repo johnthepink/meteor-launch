@@ -24,5 +24,12 @@ describe("play", () => {
           assert.equal(result, "skipped");
         });
     });
+    it("should call playup", () => {
+      process.env.PATH = `${process.cwd()}/src/__test/mocks/ios:${process.env.PATH}`;
+      play.uploadPlayStore()
+        .then((result) => {
+          assert.equal(result, "uploaded");
+        });
+    });
   });
 });

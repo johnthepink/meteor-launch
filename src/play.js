@@ -45,7 +45,7 @@ const uploadPlayStore = (env) => (
       })
     ));
 
-    return resolve();
+    return resolve("uploaded");
   })
 );
 
