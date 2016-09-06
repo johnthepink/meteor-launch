@@ -5,7 +5,7 @@ const uploadTestFlight = (env) => (
   new Promise((resolve) => {
     if (!util.hasPlatform("ios")) {
       console.log("Skipping iOS upload to TestFlight...");
-      return resolve();
+      return resolve("skipped");
     }
 
     console.log("Uploading iOS to TestFlight...");
@@ -15,7 +15,7 @@ const uploadTestFlight = (env) => (
       env,
     });
 
-    return resolve();
+    return resolve("uploaded");
   })
 );
 
