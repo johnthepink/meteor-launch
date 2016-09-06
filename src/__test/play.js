@@ -17,18 +17,20 @@ describe("play", () => {
     ));
   });
   describe("uploadPlayStore", () => {
-    it("should do nothing if no android platform", () => {
+    it("should do nothing if no android platform", (done) => {
       process.env.PATH = `${process.cwd()}/src/__test/mocks/ios:${process.env.PATH}`;
       play.uploadPlayStore()
         .then((result) => {
           assert.equal(result, "skipped");
+          done();
         });
     });
-    it("should call playup", () => {
-      process.env.PATH = `${process.cwd()}/src/__test/mocks/ios:${process.env.PATH}`;
+    it("should call playup", (done) => {
+      process.env.PATH = `${process.cwd()}/src/__test/mocks:${process.env.PATH}`;
       play.uploadPlayStore()
         .then((result) => {
           assert.equal(result, "uploaded");
+          done();
         });
     });
   });
