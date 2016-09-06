@@ -93,7 +93,6 @@ const prepareApk = (env) => (
     removeApks();
 
     const isCrosswalk = findCrosswalkApks();
-    console.log("isCrosswalk", isCrosswalk);
 
     console.log("Signing Android apk...");
     getSignCommands(isCrosswalk).map((command) => (

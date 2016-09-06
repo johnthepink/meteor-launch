@@ -42,12 +42,9 @@ describe("android", () => {
       ;
     });
     it("should handle crosswalk builds", (done) => {
-      delete require.cache[
-        `${process.cwd()}/launch.json`
-      ];
       const crosswalkOutputPath = resolve(
         process.cwd(),
-        ".build",
+        "undefined",
         "android",
         "project",
         "build",
@@ -58,8 +55,6 @@ describe("android", () => {
       execSync(`touch ${crosswalkOutputPath}/android-armv7-release-unsigned.apk`);
       execSync(`touch ${crosswalkOutputPath}/android-x86-release-unsigned.apk`);
 
-      // eslint-disable-next-line
-      execSync(`echo '{}' > launch.json`);
       process.env.PATH = `${process.cwd()}/src/__test/mocks:${process.env.PATH}`;
       process.env.ANDROID_ZIPALIGN = `${process.cwd()}/src/__test/mocks/align`;
       android.prepareApk(process.env)
@@ -70,10 +65,7 @@ describe("android", () => {
       ;
     });
     after(() => {
-      rimraf.sync(`${process.cwd()}/.build`);
-      delete require.cache[
-        `${process.cwd()}/launch.json`
-      ];
+      rimraf.sync(`${process.cwd()}/undefined`);
     });
   });
 });
