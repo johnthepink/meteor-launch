@@ -21,7 +21,7 @@ describe("galaxy", () => {
       process.argv = [];
       galaxy.deploy()
         .then(() => {
-          assert.isNotOk();
+          assert.fail();
           done();
         })
         .catch((error) => {
@@ -34,7 +34,7 @@ describe("galaxy", () => {
       process.argv = ["deploy", "example.com"];
       galaxy.deploy()
         .then(() => {
-          assert.isNotOk();
+          assert.fail();
           done();
         })
         .catch((error) => {
@@ -52,7 +52,7 @@ describe("galaxy", () => {
           done();
         })
         .catch(() => {
-          assert.isNotOk();
+          assert.fail();
           done();
         })
       ;
@@ -66,7 +66,7 @@ describe("galaxy", () => {
           done();
         })
         .catch(() => {
-          assert.isNotOk();
+          assert.fail();
           done();
         })
       ;

@@ -265,10 +265,9 @@ describe("init", () => {
         );
         try {
           statSync("launch.json");
-          assert.isOk();
           done();
         } catch (error) {
-          assert.isNotOk();
+          assert.fail();
           done();
         }
       });
@@ -284,10 +283,9 @@ describe("init", () => {
         );
         try {
           statSync("launch.json");
-          assert.isNotOk();
+          assert.fail();
           done();
         } catch (error) {
-          assert.isOk();
           done();
         }
       });
