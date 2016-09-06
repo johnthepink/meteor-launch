@@ -16,7 +16,7 @@ describe("meteor", () => {
       })
     ));
   });
-  describe.only("build", () => {
+  describe("build", () => {
     it("should reject if no server param", (done) => {
       process.argv = [];
       process.env.PATH = `${process.cwd()}/src/__test/mocks:${process.env.PATH}`;
