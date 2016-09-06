@@ -23,7 +23,7 @@ const uploadAppStore = (env) => (
   new Promise((resolve) => {
     if (!util.hasPlatform("ios")) {
       console.log("Skipping iOS upload to iTunes...");
-      return resolve();
+      return resolve("skipped");
     }
 
     console.log("Uploading to iTunes...");
@@ -33,7 +33,7 @@ const uploadAppStore = (env) => (
       env,
     });
 
-    return resolve();
+    return resolve("uploaded");
   })
 );
 

@@ -33,4 +33,20 @@ describe("iTunes", () => {
         });
     });
   });
+  describe("uploadAppStore", () => {
+    it("should do nothing if no ios platform", () => {
+      process.env.PATH = `${process.cwd()}/src/__test/mocks/android:${process.env.PATH}`;
+      iTunes.uploadAppStore()
+        .then((result) => {
+          assert.equal(result, "skipped");
+        });
+    });
+    it("should call fastlane", () => {
+      process.env.PATH = `${process.cwd()}/src/__test/mocks:${process.env.PATH}`;
+      iTunes.uploadAppStore()
+        .then((result) => {
+          assert.equal(result, "uploaded");
+        });
+    });
+  });
 });
