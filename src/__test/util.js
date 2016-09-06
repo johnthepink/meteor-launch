@@ -256,7 +256,7 @@ describe("launchFile", () => {
   });
 });
 describe("init", () => {
-  it("should create launch.json if doesn't exist", () => {
+  it("should create launch.json if doesn't exist", (done) => {
     util.init()
       .then((response) => {
         assert.include(
@@ -266,12 +266,14 @@ describe("init", () => {
         try {
           statSync("launch.json");
           assert.isOk();
+          done();
         } catch (error) {
           assert.isNotOk();
+          done();
         }
       });
   });
-  it("should do nothing if launch.json exists", () => {
+  it("should do nothing if launch.json exists", (done) => {
     // eslint-disable-next-line
     execSync(`echo '{}' > launch.json`);
     util.init()
@@ -283,17 +285,22 @@ describe("init", () => {
         try {
           statSync("launch.json");
           assert.isNotOk();
+          done();
         } catch (error) {
           assert.isOk();
+          done();
         }
       });
   });
 });
 describe("importCerts", () => {
-  it("should just work", () => {
+  it("should just work", (done) => {
     process.env.PATH = `${process.cwd()}/src/__test/mocks:${process.env.PATH}`;
     util.importCerts()
-      .then(() => assert.isOk())
+      .then((result) => {
+        assert.equal(result, "imported");
+        done();
+      })
     ;
   });
 });

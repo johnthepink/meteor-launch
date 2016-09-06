@@ -157,7 +157,7 @@ const importCerts = (env) => (
       stdio: [0, 1, 2],
       env,
     });
-    return resolve();
+    return resolve("imported");
   })
 );
 

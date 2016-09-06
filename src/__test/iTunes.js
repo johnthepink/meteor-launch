@@ -18,34 +18,38 @@ describe("iTunes", () => {
     ));
   });
   describe("uploadTestFlight", () => {
-    it("should do nothing if no ios platform", () => {
+    it("should do nothing if no ios platform", (done) => {
       process.env.PATH = `${process.cwd()}/src/__test/mocks/android:${process.env.PATH}`;
       iTunes.uploadTestFlight()
         .then((result) => {
           assert.equal(result, "skipped");
+          done();
         });
     });
-    it("should call fastlane", () => {
+    it("should call fastlane", (done) => {
       process.env.PATH = `${process.cwd()}/src/__test/mocks:${process.env.PATH}`;
       iTunes.uploadTestFlight()
         .then((result) => {
           assert.equal(result, "uploaded");
+          done();
         });
     });
   });
   describe("uploadAppStore", () => {
-    it("should do nothing if no ios platform", () => {
+    it("should do nothing if no ios platform", (done) => {
       process.env.PATH = `${process.cwd()}/src/__test/mocks/android:${process.env.PATH}`;
       iTunes.uploadAppStore()
         .then((result) => {
           assert.equal(result, "skipped");
+          done();
         });
     });
-    it("should call fastlane", () => {
+    it("should call fastlane", (done) => {
       process.env.PATH = `${process.cwd()}/src/__test/mocks:${process.env.PATH}`;
       iTunes.uploadAppStore()
         .then((result) => {
           assert.equal(result, "uploaded");
+          done();
         });
     });
   });
