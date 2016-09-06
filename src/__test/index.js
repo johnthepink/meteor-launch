@@ -1,4 +1,10 @@
-import "./help";
-import "./init";
+import "./launch";
+import "./actions";
 import "./fastlane";
-import "./settings";
+import "./util";
+import "./android";
+import "./galaxy";
+import "./hockey";
+import "./iTunes";
+import "./meteor";
+import "./play";

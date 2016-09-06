@@ -9,3 +9,5 @@ book.json
 .gitignore
 .babelrc
 launch.json
+coverage
+.coveralls.yml

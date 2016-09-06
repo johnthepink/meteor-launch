@@ -6,13 +6,15 @@ const uploadPlayStore = (env) => (
   new Promise((resolve) => {
     if (!util.hasPlatform("android")) {
       console.log("Skipping Android upload to Play Store...");
-      return resolve();
+      return resolve("skipped");
     }
 
     try {
       execSync("which playup");
     } catch (e) {
+      /* istanbul ignore next */
       console.log("Installing playup...");
+      /* istanbul ignore next */
       execSync("npm install -g playup");
     }
 
@@ -43,7 +45,7 @@ const uploadPlayStore = (env) => (
       })
     ));
 
-    return resolve();
+    return resolve("uploaded");
   })
 );
 

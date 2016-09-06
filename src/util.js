@@ -77,7 +77,9 @@ const init = () => (
     try {
       execSync("which fastlane");
     } catch (e) {
+      /* istanbul ignore next */
       console.log("Installing fastlane...");
+      /* istanbul ignore next */
       execSync("sudo gem install fastlane");
     }
 
@@ -111,7 +113,9 @@ const launchFile = () => {
   try {
     statSync(`${process.cwd()}/launch.json`);
   } catch (e) {
+    /* istanbul ignore next */
     console.log("launch.json not found. Please run: launch init");
+    /* istanbul ignore next */
     process.exit();
   }
   return true;
@@ -153,7 +157,7 @@ const importCerts = (env) => (
       stdio: [0, 1, 2],
       env,
     });
-    return resolve();
+    return resolve("imported");
   })
 );
 

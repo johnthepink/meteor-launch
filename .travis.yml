@@ -11,8 +11,10 @@ before_install:
   - rvm install 2.2.5
   - rvm use 2.2.5
 install:
+  - npm install -g coveralls
   - gem install fastlane
   - npm install
 script:
   - npm test
+  - npm run coverage
 sudo: false

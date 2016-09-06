@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+if [ $1 = "list-platforms" ]; then
+  printf "android\n"
+fi

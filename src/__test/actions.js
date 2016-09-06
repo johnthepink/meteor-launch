@@ -1,14 +1,42 @@
-/* global describe it beforeEach */
+/* global describe it before beforeEach */
 
-import { join } from "path";
-import { stat } from "fs";
 // eslint-disable-next-line
 import { assert } from "chai";
+import { join } from "path";
+import { stat } from "fs";
 import { execSync } from "child_process";
-import util from "./util";
+import rimraf from "rimraf";
+
+const commands = [
+  "init",
+  "import",
+  "build",
+  "prepare",
+  "hockey",
+  "testflight",
+  "appstore",
+  "playstore",
+  "production",
+  "galaxy",
+];
+
+describe("help", () => {
+  let output;
+
+  before(() => {
+    const buffer = execSync("launch help");
+    output = buffer.toString();
+  });
+
+  commands.map((command) => (
+    it(`should have ${command}`, () => {
+      assert.include(output, command);
+    })
+  ));
+});
 
 beforeEach(() => {
-  util.cleanLaunchFile();
+  rimraf.sync("launch.json");
 });
 
 describe("init", () => {

@@ -32,12 +32,13 @@ const build = (env) => (
         stdio: [0],
         env,
       });
+      console.log(process.env.XCODE_PROJECT);
       execSync("sleep 5");
 
-      return resolve();
+      return resolve("built");
     } catch (error) {
       // fail silently if no xcode project
-      return resolve();
+      return resolve("built");
     }
   })
 );

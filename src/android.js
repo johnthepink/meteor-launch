@@ -87,7 +87,7 @@ const prepareApk = (env) => (
   new Promise((resolve) => {
     if (!util.hasPlatform("android")) {
       console.log("Skipping Android APK preparation...");
-      return resolve();
+      return resolve("skipped");
     }
 
     removeApks();
@@ -110,7 +110,7 @@ const prepareApk = (env) => (
       })
     ));
 
-    return resolve();
+    return resolve("prepared");
   })
 );
 
