@@ -6,7 +6,7 @@ const uploadIOS = (env) => (
   new Promise((resolve) => {
     if (!util.hasPlatform("ios")) {
       console.log("Skipping iOS upload to Hockey...");
-      return resolve();
+      return resolve("skipped");
     }
 
     console.log("Uploading iOS to Hockey...");
@@ -16,7 +16,7 @@ const uploadIOS = (env) => (
       env,
     });
 
-    return resolve();
+    return resolve("uploaded");
   })
 );
 
@@ -24,7 +24,7 @@ const uploadAndroid = (env) => (
   new Promise((resolve) => {
     if (!util.hasPlatform("android")) {
       console.log("Skipping Android upload to Hockey...");
-      return resolve();
+      return resolve("skipped");
     }
 
     const getCommand = (path) => (
@@ -56,7 +56,7 @@ const uploadAndroid = (env) => (
       })
     ));
 
-    return resolve();
+    return resolve("uploaded");
   })
 );
 
