@@ -26,7 +26,7 @@ const deploy = (env) => (
       return reject(error);
     }
 
-    return resolve();
+    return resolve("deployed");
   })
 );
 
