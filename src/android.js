@@ -87,12 +87,13 @@ const prepareApk = (env) => (
   new Promise((resolve) => {
     if (!util.hasPlatform("android")) {
       console.log("Skipping Android APK preparation...");
-      return resolve();
+      return resolve("skipped");
     }
 
     removeApks();
 
     const isCrosswalk = findCrosswalkApks();
+    console.log("isCrosswalk", isCrosswalk);
 
     console.log("Signing Android apk...");
     getSignCommands(isCrosswalk).map((command) => (
@@ -110,7 +111,7 @@ const prepareApk = (env) => (
       })
     ));
 
-    return resolve();
+    return resolve("prepared");
   })
 );
 
