@@ -36,7 +36,7 @@
   "dependencies": {
     "rimraf": "^2.5.4",
     "underscore": "^1.8.3",
-    "vorpal": "^1.11.2"
+    "vorpal": "^1.11.4"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
