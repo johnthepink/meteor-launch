@@ -28,7 +28,7 @@ const launchSettings = [
 ];
 
 describe("launch.json", () => {
-  launchSettings.map((setting) => (
+  launchSettings.map(setting => (
     it(`has ${setting}`, () => {
       assert.isTrue(Object.keys(launchFile).indexOf(setting) > -1);
     })

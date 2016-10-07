@@ -28,7 +28,7 @@ describe("help", () => {
     output = buffer.toString();
   });
 
-  commands.map((command) => (
+  commands.map(command => (
     it(`should have ${command}`, () => {
       assert.include(output, command);
     })

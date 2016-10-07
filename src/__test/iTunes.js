@@ -11,7 +11,7 @@ describe("iTunes", () => {
       "uploadTestFlight",
       "uploadAppStore",
     ];
-    exportedFunctions.map((exportedFunction) => (
+    exportedFunctions.map(exportedFunction => (
       it(`should have ${exportedFunction}`, () => {
         assert.isOk(iTunes[exportedFunction]);
       })
