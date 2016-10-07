@@ -15,7 +15,7 @@ describe("android", () => {
       "findCrosswalkApks",
       "signedApks",
     ];
-    exportedFunctions.map((exportedFunction) => (
+    exportedFunctions.map(exportedFunction => (
       it(`should have ${exportedFunction}`, () => {
         assert.isOk(android[exportedFunction]);
       })

@@ -2,7 +2,7 @@ import { execSync } from "child_process";
 import android from "./android";
 import util from "./util";
 
-const uploadPlayStore = (env) => (
+const uploadPlayStore = env => (
   new Promise((resolve) => {
     if (!util.hasPlatform("android")) {
       console.log("Skipping Android upload to Play Store...");
@@ -18,7 +18,7 @@ const uploadPlayStore = (env) => (
       execSync("npm install -g playup");
     }
 
-    const getCommand = (path) => (
+    const getCommand = path => (
       `
         playup \
           --auth $PLAY_AUTH_FILE \
@@ -38,7 +38,7 @@ const uploadPlayStore = (env) => (
       [getCommand(android.signedApks.regular)]
     ;
 
-    commands.map((command) => (
+    commands.map(command => (
       execSync(command, {
         stdio: [0, 1, 2],
         env,

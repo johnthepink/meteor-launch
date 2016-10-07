@@ -10,7 +10,7 @@ describe("galaxy", () => {
     const exportedFunctions = [
       "deploy",
     ];
-    exportedFunctions.map((exportedFunction) => (
+    exportedFunctions.map(exportedFunction => (
       it(`should have ${exportedFunction}`, () => {
         assert.isOk(galaxy[exportedFunction]);
       })

@@ -150,7 +150,7 @@ const removeFastfile = () => (
   })
 );
 
-const importCerts = (env) => (
+const importCerts = env => (
   new Promise((resolve) => {
     console.log("Importing certs...");
     execSync("fastlane import", {

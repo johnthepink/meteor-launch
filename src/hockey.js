@@ -2,7 +2,7 @@ import { execSync } from "child_process";
 import android from "./android";
 import util from "./util";
 
-const uploadIOS = (env) => (
+const uploadIOS = env => (
   new Promise((resolve) => {
     if (!util.hasPlatform("ios")) {
       console.log("Skipping iOS upload to Hockey...");
@@ -20,14 +20,14 @@ const uploadIOS = (env) => (
   })
 );
 
-const uploadAndroid = (env) => (
+const uploadAndroid = env => (
   new Promise((resolve) => {
     if (!util.hasPlatform("android")) {
       console.log("Skipping Android upload to Hockey...");
       return resolve("skipped");
     }
 
-    const getCommand = (path) => (
+    const getCommand = path => (
       `
         curl -F "status=2" \
           -F "notify=0" \
@@ -49,7 +49,7 @@ const uploadAndroid = (env) => (
       [getCommand(android.signedApks.regular)]
     ;
 
-    commands.map((command) => (
+    commands.map(command => (
       execSync(command, {
         stdio: [0, 1, 2],
         env,

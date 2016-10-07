@@ -25,7 +25,7 @@ const signedApks = {
 
 const removeApks = () => {
   console.log("Removing existing apk...");
-  Object.keys(signedApks).map((apk) => (
+  Object.keys(signedApks).map(apk => (
     rimraf.sync(signedApks[apk])
   ));
 };
@@ -41,7 +41,7 @@ const findCrosswalkApks = () => {
 };
 
 const getSignCommands = (isCrosswalk) => {
-  const signCommand = (apkPath) => (
+  const signCommand = apkPath => (
     `
       jarsigner -verbose \
         -sigalg SHA1withRSA \
@@ -83,7 +83,7 @@ const getAlignCommands = (isCrosswalk) => {
   ];
 };
 
-const prepareApk = (env) => (
+const prepareApk = env => (
   new Promise((resolve) => {
     if (!util.hasPlatform("android")) {
       console.log("Skipping Android APK preparation...");
@@ -95,7 +95,7 @@ const prepareApk = (env) => (
     const isCrosswalk = findCrosswalkApks();
 
     console.log("Signing Android apk...");
-    getSignCommands(isCrosswalk).map((command) => (
+    getSignCommands(isCrosswalk).map(command => (
       execSync(command, {
         stdio: [0, 1, 2],
         env,
@@ -103,7 +103,7 @@ const prepareApk = (env) => (
     ));
 
     console.log("Aligning Android apk...");
-    getAlignCommands(isCrosswalk).map((command) => (
+    getAlignCommands(isCrosswalk).map(command => (
       execSync(command, {
         stdio: [0, 1, 2],
         env,

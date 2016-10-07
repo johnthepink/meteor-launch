@@ -1,6 +1,6 @@
 import { execSync } from "child_process";
 
-const deploy = (env) => (
+const deploy = env => (
   new Promise((resolve, reject) => {
     const meteorServer = process.argv[1];
 
