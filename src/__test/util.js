@@ -13,6 +13,12 @@ describe("generateSettings", () => {
     const results = util.generateSettings({});
     assert.deepEqual(results, {});
   });
+  it("should pass any random env var", () => {
+    // eslint-disable-next-line
+    execSync(`echo '{"WOW": "such"}' > launch.json`);
+    const results = util.generateSettings(process.env);
+    assert.deepEqual(results.WOW, "such");
+  });
   describe("ANDROID_ZIPALIGN", () => {
     beforeEach(() => {
       delete process.env.ANDROID_ZIPALIGN;
