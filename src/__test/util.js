@@ -17,6 +17,7 @@ describe("generateSettings", () => {
     // eslint-disable-next-line
     execSync(`echo '{"WOW": "such"}' > launch.json`);
     const results = util.generateSettings(process.env);
+    console.log(results);
     assert.deepEqual(results.WOW, "such");
   });
   describe("ANDROID_ZIPALIGN", () => {
