@@ -20,8 +20,8 @@ describe("generateSettings", () => {
   });
   it("should pass any random env var", () => {
     // eslint-disable-next-line
-    execSync(`echo '{"WOW": "such"}' > launch.json`);
-    const results = util.generateSettings(process.env);
+    execSync(`echo '{"ANDROID_ZIPALIGN": "/nonsense", "WOW": "such"}' > launch.json`);
+    const results = util.generateSettings({});
     assert.deepEqual(results.WOW, "such");
   });
   describe("ANDROID_ZIPALIGN", () => {
