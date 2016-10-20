@@ -9,6 +9,11 @@ import { statSync } from "fs";
 import util from "../util";
 
 describe("generateSettings", () => {
+  beforeEach(() => {
+    delete require.cache[
+      `${process.cwd()}/launch.json`
+    ];
+  });
   it("should return a blank object if no launch file", () => {
     const results = util.generateSettings({});
     assert.deepEqual(results, {});
@@ -17,7 +22,6 @@ describe("generateSettings", () => {
     // eslint-disable-next-line
     execSync(`echo '{"WOW": "such"}' > launch.json`);
     const results = util.generateSettings(process.env);
-    console.log(results);
     assert.deepEqual(results.WOW, "such");
   });
   describe("ANDROID_ZIPALIGN", () => {
