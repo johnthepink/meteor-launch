@@ -12,6 +12,7 @@ import {
 import { execSync } from "child_process";
 import rimraf from "rimraf";
 import { extend } from "underscore";
+import { version } from "../package";
 
 const setMeteorInputDir = (dir) => {
   if (
@@ -105,8 +106,7 @@ const init = () => (
 const launchFile = () => {
   // fail silently if trying to init
   if (
-    process.argv[2] === "init" ||
-    process.argv[2] === "help" ||
+    ["init", "help", "--version", "-v"].indexOf(process.argv[2]) > -1 ||
     typeof process.argv[2] === "undefined"
   ) return false;
 
@@ -166,6 +166,10 @@ const hasPlatform = (platform) => {
   return platforms.toString().indexOf(platform) > -1;
 };
 
+const getVersion = () => (
+  version
+);
+
 export default {
   generateSettings,
   launchFile,
@@ -174,4 +178,5 @@ export default {
   addFastfile,
   removeFastfile,
   hasPlatform,
+  getVersion,
 };

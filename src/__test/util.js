@@ -5,6 +5,7 @@ import { assert } from "chai";
 import { execSync } from "child_process";
 import { resolve } from "path";
 import { statSync } from "fs";
+import { version } from "../../package";
 
 import util from "../util";
 
@@ -256,6 +257,16 @@ describe("launchFile", () => {
       const result = util.launchFile();
       assert.isFalse(result);
     });
+    it("checking version", () => {
+      process.argv = [null, null, "--version"];
+      const result = util.launchFile();
+      assert.isFalse(result);
+    });
+    it("checking version shortcut", () => {
+      process.argv = [null, null, "-v"];
+      const result = util.launchFile();
+      assert.isFalse(result);
+    });
   });
   it("should error if no launch.json");
   it("should return true if launch.json", () => {
@@ -323,5 +334,11 @@ describe("hasPlatform", () => {
     process.env.PATH = `${process.cwd()}/src/__test/mocks:${process.env.PATH}`;
     const result = util.hasPlatform("nonplatform");
     assert.isFalse(result);
+  });
+});
+describe("getVersion", () => {
+  it("should return version number", () => {
+    const result = util.getVersion();
+    assert.equal(result, version);
   });
 });
