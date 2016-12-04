@@ -18,6 +18,13 @@ if (util.launchFile()) {
 }
 
 Launch
+  .command("--version", "Ouputs version number")
+  .alias("-v")
+  .action(() => {
+    console.log(util.getVersion());
+  });
+
+Launch
   .command("init", "Generates launch.json file for environment vars")
   .action(() => {
     util.init(superEnv)
