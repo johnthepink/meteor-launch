@@ -49,7 +49,7 @@ describe("android", () => {
         "project",
         "build",
         "outputs",
-        "apk"
+        "apk",
       );
       execSync(`mkdir -p ${crosswalkOutputPath}`);
       execSync(`touch ${crosswalkOutputPath}/android-armv7-release-unsigned.apk`);

@@ -13,7 +13,6 @@
     "coverage": "istanbul cover -x '**/__test/**' ./node_modules/mocha/bin/_mocha -- --reporter dot --full-trace lib/__test/index.js",
     "postcoverage": "remap-istanbul --input coverage/coverage.json --type lcovonly --output coverage/lcov.info && npm run send:coverage",
     "send:coverage": "scripts/fixMap.sh && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-
     "build:book": "gitbook build && rm -rf docs && mv _book docs"
   },
   "repository": {
@@ -44,8 +43,8 @@
     "chai": "^3.5.0",
     "coveralls": "^2.11.12",
     "eslint": "^3.4.0",
-    "eslint-config-airbnb": "^12.0.0",
-    "eslint-plugin-import": "^1.9.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.1",
     "eslint-plugin-react": "^6.2.0",
     "istanbul": "^0.4.5",
