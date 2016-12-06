@@ -12,7 +12,7 @@ import {
 import { execSync } from "child_process";
 import rimraf from "rimraf";
 import { extend } from "underscore";
-import { version } from "../package";
+import { version } from "../package.json";
 
 const setMeteorInputDir = (dir) => {
   if (
@@ -38,7 +38,7 @@ const generateSettings = (originalEnv) => {
   const launchFile = join(process.cwd(), "launch.json");
   let launchVars = {};
   try {
-    // eslint-disable-next-line global-require
+    // eslint-disable-next-line global-require, import/no-dynamic-require
     launchVars = require(launchFile);
     // eslint-disable-next-line no-empty
   } catch (error) { return {}; }
@@ -51,13 +51,13 @@ const generateSettings = (originalEnv) => {
     FL_REPORT_PATH: join(
       process.cwd(),
       launchVars.METEOR_OUTPUT_DIR,
-      "ios"
+      "ios",
     ),
     XCODE_PROJECT: pathResolve(
       launchVars.METEOR_OUTPUT_DIR,
       "ios",
       "project",
-      `${launchVars.XCODE_SCHEME_NAME}.xcodeproj`
+      `${launchVars.XCODE_SCHEME_NAME}.xcodeproj`,
     ),
   };
   const result = extend(launchVars, otherVars, originalEnv);
@@ -68,7 +68,7 @@ const generateSettings = (originalEnv) => {
       ANDROID_ZIPALIGN: result.ANDROID_ZIPALIGN[0] === "~" ?
         join(process.env.HOME, result.ANDROID_ZIPALIGN.slice(1)) :
         pathResolve(result.ANDROID_ZIPALIGN),
-    }
+    },
   );
 };
 

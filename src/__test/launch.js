@@ -2,7 +2,7 @@
 
 // eslint-disable-next-line
 import { assert } from "chai";
-import launchFile from "../../assets/launch";
+import launchFile from "../../assets/launch.json";
 
 const launchSettings = [
   "METEOR_INPUT_DIR",

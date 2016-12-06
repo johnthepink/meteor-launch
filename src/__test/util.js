@@ -5,7 +5,7 @@ import { assert } from "chai";
 import { execSync } from "child_process";
 import { resolve } from "path";
 import { statSync } from "fs";
-import { version } from "../../package";
+import { version } from "../../package.json";
 
 import util from "../util";
 
@@ -48,8 +48,8 @@ describe("generateSettings", () => {
         results.ANDROID_ZIPALIGN,
         resolve(
           process.cwd(),
-          "../meow"
-        )
+          "../meow",
+        ),
       );
     });
   });
@@ -79,8 +79,8 @@ describe("generateSettings", () => {
         results.METEOR_INPUT_DIR,
         resolve(
           process.cwd(),
-          "nonsense"
-        )
+          "nonsense",
+        ),
       );
     });
   });
@@ -136,8 +136,8 @@ describe("generateSettings", () => {
         resolve(
           process.cwd(),
           "..",
-          "nonsense"
-        )
+          "nonsense",
+        ),
       );
     });
   });
@@ -154,7 +154,7 @@ describe("generateSettings", () => {
       assert.equal(results.FL_REPORT_PATH, resolve(
         process.cwd(),
         ".build",
-        "ios"
+        "ios",
       ));
     });
     it("should use custom output dir if specified", () => {
@@ -165,7 +165,7 @@ describe("generateSettings", () => {
         process.cwd(),
         "..",
         "nonsense",
-        "ios"
+        "ios",
       ));
     });
   });
@@ -184,7 +184,7 @@ describe("generateSettings", () => {
         ".build",
         "ios",
         "project",
-        "scheme.xcodeproj"
+        "scheme.xcodeproj",
       ));
     });
     it("should use custom output dir if specified", () => {
@@ -197,7 +197,7 @@ describe("generateSettings", () => {
         "nonsense",
         "ios",
         "project",
-        "scheme.xcodeproj"
+        "scheme.xcodeproj",
       ));
     });
   });
@@ -283,7 +283,7 @@ describe("init", () => {
       .then((response) => {
         assert.include(
           response,
-          "launch.json created. Open it and fill out the vars"
+          "launch.json created. Open it and fill out the vars",
         );
         try {
           statSync("launch.json");
@@ -301,7 +301,7 @@ describe("init", () => {
       .then((response) => {
         assert.include(
           response,
-          "launch.json already exists"
+          "launch.json already exists",
         );
         try {
           statSync("launch.json");

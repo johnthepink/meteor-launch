@@ -47,7 +47,7 @@ describe("init", () => {
 
     assert.equal(
       output.toString(),
-      "launch.json not found. Please run: launch init\n"
+      "launch.json not found. Please run: launch init\n",
     );
   });
 
@@ -58,7 +58,7 @@ describe("init", () => {
 
     assert.include(
       output.toString(),
-      "launch.json created. Open it and fill out the vars\n"
+      "launch.json created. Open it and fill out the vars\n",
     );
   });
 
