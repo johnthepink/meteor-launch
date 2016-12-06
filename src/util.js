@@ -12,7 +12,7 @@ import {
 import { execSync } from "child_process";
 import rimraf from "rimraf";
 import { extend } from "underscore";
-import { version } from "../package";
+import { version } from "../package.json";
 
 const setMeteorInputDir = (dir) => {
   if (
@@ -38,7 +38,7 @@ const generateSettings = (originalEnv) => {
   const launchFile = join(process.cwd(), "launch.json");
   let launchVars = {};
   try {
-    // eslint-disable-next-line global-require
+    // eslint-disable-next-line global-require, import/no-dynamic-require
     launchVars = require(launchFile);
     // eslint-disable-next-line no-empty
   } catch (error) { return {}; }

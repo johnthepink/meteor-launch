@@ -5,7 +5,7 @@ import { assert } from "chai";
 import { execSync } from "child_process";
 import { resolve } from "path";
 import { statSync } from "fs";
-import { version } from "../../package";
+import { version } from "../../package.json";
 
 import util from "../util";
 
