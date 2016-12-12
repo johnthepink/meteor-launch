@@ -42,7 +42,8 @@ Launch
 Launch
   .command("build", "Builds the Meteor app in the .build folder")
   .action(() => {
-    meteor.build(superEnv)
+    util.cleanMeteorOutputDir(superEnv)
+      .then(meteor.build(superEnv))
       .catch(error => console.log(error));
   });
 
