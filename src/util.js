@@ -72,6 +72,13 @@ const generateSettings = (originalEnv) => {
   );
 };
 
+const cleanMeteorOutputDir = env => (
+  new Promise((resolve) => {
+    rimraf.sync(env.METEOR_OUTPUT_DIR);
+    return resolve();
+  })
+);
+
 const init = () => (
   new Promise((resolve) => {
     const launchFile = join(process.cwd(), "launch.json");
@@ -179,4 +186,5 @@ export default {
   removeFastfile,
   hasPlatform,
   getVersion,
+  cleanMeteorOutputDir,
 };

@@ -5,6 +5,7 @@ import { assert } from "chai";
 import { execSync } from "child_process";
 import { resolve } from "path";
 import { statSync } from "fs";
+import rimraf from "rimraf";
 import { version } from "../../package.json";
 
 import util from "../util";
@@ -340,5 +341,19 @@ describe("getVersion", () => {
   it("should return version number", () => {
     const result = util.getVersion();
     assert.equal(result, version);
+  });
+});
+describe("cleanMeteorOutputDir", () => {
+  it("should remove existing build folder", (done) => {
+    rimraf.sync(".build");
+    execSync("mkdir .build && touch .build/test");
+    statSync(".build/test");
+    process.env.METEOR_OUTPUT_DIR = ".build";
+    util.cleanMeteorOutputDir(process.env);
+    try {
+      statSync(".build");
+    } catch (error) {
+      done();
+    }
   });
 });
