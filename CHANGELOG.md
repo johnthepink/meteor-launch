@@ -1,3 +1,7 @@
+# 0.3.4
+
+* Clean `METEOR_OUTPUT_DIR` on each build
+
 # 0.3.3
 
 * Prevent attempting to post to Slack if no Slack url present
