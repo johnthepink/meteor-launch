@@ -5,17 +5,16 @@ node_js:
   - "5"
   - "4"
 cache:
+  yarn: true
   directories:
   - node_modules
   - "$HOME/.rvm"
 before_install:
   - rvm install 2.2.5
   - rvm use 2.2.5
-install:
+script:
   - yarn global coveralls
   - gem install fastlane
-  - yarn
-script:
   - yarn test
   - yarn coverage
 sudo: false
