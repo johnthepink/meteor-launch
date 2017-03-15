@@ -13,7 +13,7 @@ before_install:
   - rvm install 2.2.5
   - rvm use 2.2.5
 script:
-  - yarn global coveralls
+  - yarn global add coveralls
   - gem install fastlane
   - yarn test
   - yarn coverage
