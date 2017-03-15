@@ -33,20 +33,20 @@
   },
   "homepage": "https://github.com/NewSpring/meteor-launch#readme",
   "dependencies": {
-    "rimraf": "^2.5.4",
+    "rimraf": "^2.6.1",
     "underscore": "^1.8.3",
     "vorpal": "^1.11.4"
   },
   "devDependencies": {
-    "babel-cli": "^6.10.1",
-    "babel-preset-es2015": "^6.13.0",
+    "babel-cli": "^6.24.0",
+    "babel-preset-es2015": "^6.24.0",
     "chai": "^3.5.0",
-    "coveralls": "^2.11.12",
-    "eslint": "^3.4.0",
-    "eslint-config-airbnb": "^13.0.0",
+    "coveralls": "^2.12.0",
+    "eslint": "^3.17.1",
+    "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.1.2",
     "remap-istanbul": "0.8.0"
