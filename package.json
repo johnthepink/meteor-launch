@@ -49,6 +49,6 @@
     "eslint-plugin-react": "^6.10.3",
     "istanbul": "^0.4.5",
     "mocha": "^3.5.0",
-    "remap-istanbul": "0.8.0"
+    "remap-istanbul": "0.10.0"
   }
 }
